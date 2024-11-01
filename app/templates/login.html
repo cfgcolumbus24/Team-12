@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+
+
+  <div class="accessHeader">Access</div>
+
+  <div class="login_container">
+    {% if showForgotForm %}
+      <div>
+        <form method="post" action="{{ url_for('auth_views.reset_password') }}">
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email" required>
+          <input type="submit" value="Submit">
+          <div class="back_to_login" onclick="showLoginForm()">Back to login</div>
+        </form>
+      </div>
+    {% else %}
+      <div id="loginForm">
+        <form method="post" action="{{ url_for('auth_views.login') }}">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="flash-messages">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+
+  <div class="footer">
+    This application is managed by *team here*.<br><br>
+    Access is restricted to authorized users only. For access or support call (770) 513-5040.
+  </div>
+
+  <div class="version-footer">
+    Version: *version here*
+  </div>
+
+  
+</body>
+</html>
