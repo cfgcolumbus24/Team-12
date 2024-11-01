@@ -2,7 +2,18 @@
 
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import Navbar from "@/components/ui/Navbar";
 
 import { useState } from "react";
