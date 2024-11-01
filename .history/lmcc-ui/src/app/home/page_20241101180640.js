@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import Navbar from "@/components/ui/Navbar";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -23,7 +22,7 @@ import Link from "next/link";
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Sample data for alumni (want to change this with a sample DB)
+  // Sample data for alumni (replace with real image paths)
   const alumniData = [
     { id: 1, name: "Andy Painter", picture: "/assets/stock1.jpeg" },
     { id: 2, name: "Pablo Picasso", picture: "/assets/stock1.jpeg" },
@@ -41,7 +40,26 @@ export default function AlumniPanel() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <Navbar />
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-4">
+            {" "}
+            {/* Horizontal flex layout with spacing */}
+            <NavigationMenuItem>
+              <Link href="/home" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Home
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/form" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Events Form
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
         <h1 className="text-4xl font-bold text-center mb-8">Artist Match</h1>
 

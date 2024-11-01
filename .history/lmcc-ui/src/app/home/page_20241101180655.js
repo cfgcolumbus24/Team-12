@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import Navbar from "@/components/ui/Navbar";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -41,7 +40,26 @@ export default function AlumniPanel() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <Navbar />
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-4">
+            {" "}
+            {/* Horizontal flex layout with spacing */}
+            <NavigationMenuItem>
+              <Link href="/home" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Home
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/form" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Events Form
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
         <h1 className="text-4xl font-bold text-center mb-8">Artist Match</h1>
 
