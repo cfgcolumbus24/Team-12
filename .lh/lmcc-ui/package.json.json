@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lmcc-ui/package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730501252848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730501427008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,16 +8,24 @@\n     \"start\": \"next start\",\n     \"lint\": \"next lint\"\n   },\n   \"dependencies\": {\n+    \"@radix-ui/react-icons\": \"^1.3.1\",\n+    \"@radix-ui/react-navigation-menu\": \"^1.2.1\",\n+    \"@radix-ui/react-slot\": \"^1.1.0\",\n+    \"class-variance-authority\": \"^0.7.0\",\n+    \"clsx\": \"^2.1.1\",\n+    \"lucide-react\": \"^0.454.0\",\n+    \"next\": \"15.0.2\",\n     \"react\": \"19.0.0-rc-02c0e824-20241028\",\n     \"react-dom\": \"19.0.0-rc-02c0e824-20241028\",\n     \"tailwind-merge\": \"^2.5.4\",\n     \"tailwindcss-animate\": \"^1.0.7\"\n   },\n   \"devDependencies\": {\n+    \"autoprefixer\": \"^10.4.20\",\n     \"eslint\": \"^8\",\n     \"eslint-config-next\": \"15.0.2\",\n-    \"postcss\": \"^8\",\n-    \"tailwindcss\": \"^3.4.1\"\n+    \"postcss\": \"^8.4.47\",\n+    \"tailwindcss\": \"^3.4.14\"\n   }\n }\n"
+                }
+            ],
+            "date": 1730501252848,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"lmcc-ui\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\"\n  },\n  \"dependencies\": {\n    \"react\": \"19.0.0-rc-02c0e824-20241028\",\n    \"react-dom\": \"19.0.0-rc-02c0e824-20241028\",\n    \"tailwind-merge\": \"^2.5.4\",\n    \"tailwindcss-animate\": \"^1.0.7\"\n  },\n  \"devDependencies\": {\n    \"eslint\": \"^8\",\n    \"eslint-config-next\": \"15.0.2\",\n    \"postcss\": \"^8\",\n    \"tailwindcss\": \"^3.4.1\"\n  }\n}\n"
+        }
+    ]
+}
