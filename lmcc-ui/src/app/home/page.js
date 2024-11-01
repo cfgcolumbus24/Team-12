@@ -2,17 +2,31 @@
 
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Sample data for alumni (replace with real image paths)
+  // Sample data for alumni (want to change this with a sample DB)
   const alumniData = [
-    { id: 1, name: "Alumni One", picture: "/assets/stock1.jpeg" },
-    { id: 2, name: "Alumni Two", picture: "/assets/stock1.jpeg" },
-    { id: 3, name: "Alumni Three", picture: "/assets/stock1.jpeg" },
+    { id: 1, name: "Andy Painter", picture: "/assets/stock1.jpeg" },
+    { id: 2, name: "Pablo Picasso", picture: "/assets/stock1.jpeg" },
+    { id: 3, name: "Anurag Davinci", picture: "/assets/stock1.jpeg" },
     { id: 4, name: "Alumni Four", picture: "/assets/stock1.jpeg" },
     { id: 5, name: "Alumni Five", picture: "/assets/stock1.jpeg" },
     { id: 6, name: "Alumni Six", picture: "/assets/stock1.jpeg" },
@@ -26,7 +40,35 @@ export default function AlumniPanel() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8">Alumni Panel</h1>
+        <NavigationMenu>
+          <NavigationMenuList className="flex space-x-4">
+            {" "}
+            {/* Horizontal flex layout with spacing */}
+            <NavigationMenuItem>
+              <Link href="/home" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Home
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/form" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Events Form
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/discussion" passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Discussion
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <h1 className="text-4xl font-bold text-center mb-8">Artist Match</h1>
 
         {/* Search Input */}
         <div className="mb-8 flex justify-center">
