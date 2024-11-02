@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
 
-// Sample posts to display when the app is loaded
+
 // Sample posts to display when the app is loaded
 const samplePosts = [
   {
