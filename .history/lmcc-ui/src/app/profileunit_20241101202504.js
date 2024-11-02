@@ -10,18 +10,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { FaInstagram, FaGlobe, FaTwitter } from "react-icons/fa"; // Import icons from react-icons
 
-const ProfileUnit = ({
-  name,
-  avatar,
-  bio,
-  topics,
-  number,
-  instagram,
-  website,
-  twitter,
-}) => {
+const ProfileUnit = ({ name, avatar, bio, topics, number }) => {
   return (
     <Card className="max-w-sm p-4">
       <CardHeader className="flex flex-col items-center">
@@ -53,7 +43,7 @@ const ProfileUnit = ({
         <br />
         <div>
           <h3 className="text-md font-semibold flex-wrap text-center">
-            Phone Number
+            Contact
           </h3>
           <p className="text-sm text-gray-600 flex-wrap text-center">
             {number}
@@ -62,21 +52,15 @@ const ProfileUnit = ({
       </CardContent>
       <CardFooter className="flex flex-col items-center text-gray-700 text-sm p-4 flex-wrap text-center">
         <div className="flex space-x-4 items-center">
-          <a href={instagram} target="_blank" rel="noopener noreferrer">
-            <Button className="h-8 w-8" variant="outline">
-              <FaInstagram />
-            </Button>
-          </a>
-          <a href={website} target="_blank" rel="noopener noreferrer">
-            <Button className="h-8 w-8" variant="outline">
-              <FaGlobe />
-            </Button>
-          </a>
-          <a href={twitter} target="_blank" rel="noopener noreferrer">
-            <Button className="h-8 w-8" variant="outline">
-              <FaTwitter />
-            </Button>
-          </a>
+          <Button className="h-4 w-8" variant="outline">
+            X
+          </Button>
+          <Button className="h-4 w-8" variant="outline">
+            X
+          </Button>
+          <Button className="h-4 w-8" variant="outline">
+            X
+          </Button>
         </div>
       </CardFooter>
     </Card>

@@ -1,15 +1,18 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import Navbar from "@/components/ui/Navbar";
 import ProfileUnit from "../profileunit";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Sample data for alumni
+  // Sample data for alumni (want to change this with a sample DB)
   const alumniData = [
     {
       id: 1,
@@ -17,56 +20,42 @@ export default function AlumniPanel() {
       picture: "https://github.com/shadcn.png",
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
     {
       id: 2,
       name: "Pablo Picasso",
       picture: "https://github.com/shadcn.png",
       bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      topics: "Guitar",
     },
     {
       id: 3,
       name: "Anurag Davinci",
       picture: "https://github.com/shadcn.png",
       bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      topics: "Guitar",
     },
     {
       id: 4,
-      name: "Anurag Davinci",
+      name: "Alumni Four",
       picture: "https://github.com/shadcn.png",
       bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      topics: "Guitar",
     },
     {
       id: 5,
-      name: "Anurag Davinci",
+      name: "Alumni Five",
       picture: "https://github.com/shadcn.png",
       bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      topics: "Guitar",
     },
-    // Add more fake data entries if needed
+    {
+      id: 6,
+      name: "Alumni Six",
+      picture: "https://github.com/shadcn.png",
+      bio: "Hello!",
+      topics: "Guitar",
+    },
   ];
 
   // Filter alumni based on the search term
@@ -94,19 +83,15 @@ export default function AlumniPanel() {
 
         {/* Alumni Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filteredAlumni.map((alumnus) => (
-            <ProfileUnit
-              key={alumnus.id}
-              name={alumnus.name}
-              avatar={alumnus.picture}
-              bio={alumnus.bio}
-              topics={alumnus.topics}
-              number={alumnus.contact}
-              twitter={alumnus.twitter}
-              instagram={alumnus.instagram}
-              website={alumnus.portfolio}
-            />
-          ))}
+          {filteredAlumni.map((alumnus) =>
+            ProfileUnit(
+              alumnus.name,
+              alumnus.picture,
+              alumnus.bio,
+              alumnus.topics,
+              alumnus.id
+            )
+          )}
         </div>
       </div>
     </div>

@@ -66,7 +66,7 @@ export default function AlumniPanel() {
       instagram: "https://www.instagram.com/lmcc_nyc",
       portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
-    // Add more fake data entries if needed
+    // Add more entries if needed
   ];
 
   // Filter alumni based on the search term
@@ -102,9 +102,7 @@ export default function AlumniPanel() {
               bio={alumnus.bio}
               topics={alumnus.topics}
               number={alumnus.contact}
-              twitter={alumnus.twitter}
-              instagram={alumnus.instagram}
-              website={alumnus.portfolio}
+              twitter={alu}
             />
           ))}
         </div>

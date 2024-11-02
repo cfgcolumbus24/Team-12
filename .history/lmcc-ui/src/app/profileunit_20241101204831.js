@@ -53,7 +53,7 @@ const ProfileUnit = ({
         <br />
         <div>
           <h3 className="text-md font-semibold flex-wrap text-center">
-            Phone Number
+            Contact
           </h3>
           <p className="text-sm text-gray-600 flex-wrap text-center">
             {number}

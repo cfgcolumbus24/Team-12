@@ -18,9 +18,6 @@ export default function AlumniPanel() {
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
       contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
     {
       id: 2,
@@ -29,9 +26,6 @@ export default function AlumniPanel() {
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
       contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
     {
       id: 3,
@@ -40,9 +34,6 @@ export default function AlumniPanel() {
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
       contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
     {
       id: 4,
@@ -51,9 +42,6 @@ export default function AlumniPanel() {
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
       contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
     {
       id: 5,
@@ -62,11 +50,8 @@ export default function AlumniPanel() {
       bio: "Hello!",
       topics: { first: "guitar", second: "painting" },
       contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
-    // Add more fake data entries if needed
+    // Add more entries if needed
   ];
 
   // Filter alumni based on the search term
@@ -102,9 +87,6 @@ export default function AlumniPanel() {
               bio={alumnus.bio}
               topics={alumnus.topics}
               number={alumnus.contact}
-              twitter={alumnus.twitter}
-              instagram={alumnus.instagram}
-              website={alumnus.portfolio}
             />
           ))}
         </div>
