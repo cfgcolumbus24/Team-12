@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lmcc-ui/src/app/profileunit.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730509145008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730509145008,
+            "name": "Commit-0",
+            "content": "import React from \"react\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { FaInstagram, FaGlobe, FaTwitter } from \"react-icons/fa\"; // Import icons from react-icons\n\nconst ProfileUnit = ({\n  name,\n  avatar,\n  bio,\n  topics,\n  number,\n  instagram,\n  website,\n  twitter,\n}) => {\n  return (\n    <Card className=\"max-w-sm p-4\">\n      <CardHeader className=\"flex flex-col items-center\">\n        <Avatar className=\"h-32 w-32\">\n          <AvatarImage src={avatar} />\n          <AvatarFallback>Image</AvatarFallback>\n        </Avatar>\n        <h2 className=\"mt-4 text-lg font-semibold\">{name}</h2>\n        <div className=\"flex space-x-4 items-center justify-center\">\n          {topics.first && (\n            <Badge className=\"h-6 w-15\" variant=\"outline\">\n              {topics.first}\n            </Badge>\n          )}\n          {topics.second && (\n            <Badge className=\"h-6 w-15\" variant=\"outline\">\n              {topics.second}\n            </Badge>\n          )}\n        </div>\n      </CardHeader>\n      <CardContent>\n        <div>\n          <h3 className=\"text-md font-semibold flex-wrap text-center\">\n            About Me\n          </h3>\n          <p className=\"text-sm text-gray-600 flex-wrap text-center\">{bio}</p>\n        </div>\n        <br />\n        <div>\n          <h3 className=\"text-md font-semibold flex-wrap text-center\">\n            Phone Number\n          </h3>\n          <p className=\"text-sm text-gray-600 flex-wrap text-center\">\n            {number}\n          </p>\n        </div>\n      </CardContent>\n      <CardFooter className=\"flex flex-col items-center text-gray-700 text-sm p-4 flex-wrap text-center\">\n        <div className=\"flex space-x-4 items-center\">\n          <a href={instagram} target=\"_blank\" rel=\"noopener noreferrer\">\n            <Button className=\"h-8 w-8\" variant=\"outline\">\n              <FaInstagram />\n            </Button>\n          </a>\n          <a href={website} target=\"_blank\" rel=\"noopener noreferrer\">\n            <Button className=\"h-8 w-8\" variant=\"outline\">\n              <FaGlobe />\n            </Button>\n          </a>\n          <a href={twitter} target=\"_blank\" rel=\"noopener noreferrer\">\n            <Button className=\"h-8 w-8\" variant=\"outline\">\n              <FaTwitter />\n            </Button>\n          </a>\n        </div>\n      </CardFooter>\n    </Card>\n  );\n};\n\nexport default ProfileUnit;\n"
+        }
+    ]
+}
