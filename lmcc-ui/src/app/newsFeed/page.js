@@ -9,6 +9,14 @@ import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
 
 
+const hottestEvents = [
+  { title: "Art & Wine Festival", date: "Nov 3, 2024", location: "Downtown Athens" },
+  { title: "Live Jazz Night", date: "Nov 4, 2024", location: "Blue Note Cafe" },
+  { title: "Sculpture Exhibition", date: "Nov 5, 2024", location: "City Art Museum" },
+  { title: "Photography Workshop", date: "Nov 6, 2024", location: "Artist's Hub" },
+  { title: "Charity Art Auction", date: "Nov 7, 2024", location: "Grand Hall" },
+];
+
 // Sample posts to display when the app is loaded
 const samplePosts = [
   {
@@ -91,6 +99,23 @@ const PostList = ({ posts }) => {
   );
 };
 
+const EventsWidget = ({ events }) => {
+  return (
+    <div className="p-10 max-w-xs border rounded-xl shadow-md bg-gray-100" style={{ maxHeight: "580px",marginTop: "90px"}} >
+      <h3 className="text-lg font-semibold mb-4 text-center">Hottest Events This Week</h3>
+      <ul className="space-y-3">
+        {events.map((event, index) => (
+          <li key={index} className="flex flex-col p-3 bg-white rounded-lg shadow-sm">
+            <h4 className="text-md font-bold">{event.title}</h4>
+            <p className="text-sm text-gray-500">{event.date}</p>
+            <p className="text-sm text-gray-400">{event.location}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 // PostForm Component to create new posts
 const PostForm = ({ onPostCreate }) => {
   const [content, setContent] = useState("");
@@ -145,6 +170,7 @@ const PostForm = ({ onPostCreate }) => {
 };
 
 // Main Newsfeed Component
+// Main Newsfeed Component
 const Newsfeed = () => {
   const [posts, setPosts] = useState(samplePosts);
 
@@ -158,15 +184,29 @@ const Newsfeed = () => {
     setPosts([newPost, ...posts]);
   };
 
+  // User profile data
+
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <Navbar />
-      <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
-      <PostForm onPostCreate={handlePostCreate} />
-      <PostList posts={posts} />
+    <div className="max-w-6xl mx-auto p-4 flex space-x-6">
+      {/* Main content column */}
+      <div className="flex-grow">
+        <Navbar />
+        <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
+        
+        {/* User Profile and PostForm */}
+        
+        <PostForm onPostCreate={handlePostCreate} />
+        
+        {/* Post list */}
+        <PostList posts={posts} />
+      </div>
+
+      {/* Events Widget Column */}
+      <EventsWidget events={hottestEvents} />
     </div>
   );
 };
+
 
 // Export the Newsfeed component as the default export
 const Page = () => {
