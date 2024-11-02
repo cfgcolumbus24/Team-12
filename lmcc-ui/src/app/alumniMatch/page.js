@@ -85,7 +85,6 @@ export default function AlumniPanel() {
     alumnus.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  
   useEffect(() => {
     setIsLightboxOpen(true); 
   }, []);
@@ -97,27 +96,33 @@ export default function AlumniPanel() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
         <Navbar />
 
-        <div className="my-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-800">Artist Match</h1>
-          <p className="text-gray-600 mt-2">Find and connect with artists!</p>
+        <div className="text-center my-8">
+        <h1 className="text-4xl font-bold text-blue-800">Alumni Match</h1>
+        <p className="text-gray-500 mt-3 text-lg">Find and connect with artists!</p>
         </div>
 
-        <div className="mb-8 flex justify-center">
+        {/* Search Bar */}
+        <div className="flex justify-center mb-6">
           <Input
             type="text"
             placeholder="Search alumni..."
-            className="w-full max-w-md"
+            className="w-full max-w-md rounded-full px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-8 mt-8">
+        {/* Alumni Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredAlumni.map((alumnus) => (
-            <div key={alumnus.id} onClick={() => openProfileLightbox(alumnus)}>
+            <div
+              key={alumnus.id}
+              className="cursor-pointer transform transition hover:scale-105"
+              onClick={() => openProfileLightbox(alumnus)}
+            >
               <ProfileUnit
                 name={alumnus.name}
                 avatar={alumnus.picture}
@@ -131,19 +136,21 @@ export default function AlumniPanel() {
         </div>
       </div>
 
+      {/* Initial Lightbox */}
       {isLightboxOpen && (
         <Lightbox
-        isOpen={isLightboxOpen}
-        onClose={() => setIsLightboxOpen(false)}
-        content={<h1 className="text-2xl font-bold text-center">Check Out What's Coming Soon!</h1>}
-        name = {"Party of the Year"}
-        location = {"Governor's Island"}
-        time = {"12 PM on Saturday, November 2"}
-        picture = {"https://wallpapercave.com/wp/wp9977857.jpg"}
-        host = {"Some alumni"}
-      />
+          isOpen={isLightboxOpen}
+          onClose={() => setIsLightboxOpen(false)}
+          content={<h1 className="text-2xl font-bold text-center">Check Out What's Coming Soon!</h1>}
+          name="Party of the Year"
+          location="Governor's Island"
+          time="12 PM on Saturday, November 2"
+          picture="https://wallpapercave.com/wp/wp9977857.jpg"
+          host="Some alumni"
+        />
       )}
 
+      {/* Profile Lightbox */}
       {isProfileLightboxOpen && selectedAlumnus && (
         <ProfileLightbox
           isOpen={isProfileLightboxOpen}

@@ -73,23 +73,26 @@ const handleClose = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-200 py-12 px-6">
-      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
         <Navbar />
         <div className="my-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-800"> Alumni Job Board</h1>
-          <p className="text-gray-600 mt-2"> Explore exciting job opportunities for our alumni!</p>
+        <h1 className="text-4xl font-bold text-blue-800">Alumni Job Board</h1>
+          <p className="text-gray-500 mt-3 text-lg">
+          Explore exciting job opportunities for our alumni!
+          </p>
+        
 
         </div>
 
 
         {}
-        <div className="mb-4 flex justify-center">
+        <div className="flex justify-center my-6">
 
              <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
-        > Add Event Positions</button>
+          className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
+          > Add Event Positions</button>
            
 
           
@@ -115,6 +118,8 @@ const handleClose = () => {
             type="text"
             placeholder="Search events..."
             className="w-full max-w-md"
+            className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
+
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
