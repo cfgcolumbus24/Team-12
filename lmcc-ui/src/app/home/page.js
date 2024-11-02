@@ -184,15 +184,15 @@ const Newsfeed = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
-      <div className="max-w-6xl mx-auto p-4 flex flex-col space-y-6">
-        <div className="flex-grow bg-white rounded-lg shadow-md p-6 flex flex-col">
+            <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
+
           <Navbar />
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">
-              Artist Newsfeed
-            </h1>
-            <p className="text-gray-600 mt-2">
-              See what artists have been up to!
+          <h1 className="text-4xl font-bold text-blue-800">Artist Newsfeed
+          </h1>
+       
+          <p className="text-gray-500 mt-3 text-lg">
+                          See what artists have been up to!
             </p>
           </div>
           <div className="flex flex-grow space-x-6">
@@ -206,7 +206,6 @@ const Newsfeed = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
