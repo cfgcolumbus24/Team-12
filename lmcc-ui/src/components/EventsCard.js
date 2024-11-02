@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -7,14 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useState } from "react";
 
 import Attending from "./Attending";
 import InterestedButton from "./InterestedButton";
 
 export default function EventsCard({ title, description, date, image }) {
   const [isInterested, setIsInterested] = useState(false);
-  console.log(isInterested);
+  const [attendeeCount, setAttendeeCount] = useState(28); // Starting count, adjust as needed
+
+  const handleInterestedClick = () => {
+    setIsInterested(!isInterested);
+    setAttendeeCount((prevCount) =>
+      isInterested ? prevCount - 1 : prevCount + 1
+    );
+  };
+
   return (
     <Card className="shadow-lg rounded-md overflow-hidden border border-gray-200">
       <img
@@ -35,9 +43,12 @@ export default function EventsCard({ title, description, date, image }) {
         <p>{date}</p>
       </CardFooter>
       <div className="flex flex-col items-center w-full m-3 gap-y-7">
-        <Attending profileImg="https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />
+        <Attending
+          profileImg="/assets/stock1.jpeg"
+          attendeeCount={attendeeCount}
+        />
         <InterestedButton
-          onClick={() => setIsInterested(!isInterested)}
+          onClick={handleInterestedClick}
           interested={isInterested}
         />
       </div>

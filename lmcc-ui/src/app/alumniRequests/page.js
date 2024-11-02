@@ -6,10 +6,23 @@ import { useState } from "react";
 import Navbar from "@/components/ui/Navbar";
 import AlumniForm from "@/app/alumniForm/page";
 
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+}
+
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [eventsList, setEventsList] = useState([
+<<<<<<< HEAD
+=======
+    // Initial events
+>>>>>>> ca330a7 (working job request form)
     {
       id: 1,
       title: "Networking Dinner",
@@ -24,10 +37,18 @@ export default function JobOpenings() {
       positionsNeeded: "Booth Representatives, Organizers",
       image: "https://www.bcfr.org/wp-content/uploads/2023/01/Canva-Graphics-03-e1674840158165.png",
     },
+<<<<<<< HEAD
   ]);
 
   const searchedEvents = eventsList.filter((event) => {
     const title = event.title || ""; 
+=======
+    // ... other initial events
+  ]);
+
+  const searchedEvents = eventsList.filter((event) => {
+    const title = event.title || ""; // Ensure title is a string
+>>>>>>> ca330a7 (working job request form)
     return title.toLowerCase().includes(query.toLowerCase());
   });
 
@@ -52,6 +73,41 @@ export default function JobOpenings() {
           </p>
         </div>
 
+
+        {}
+        <div className="mb-4 flex justify-center">
+
+             <button
+          onClick={() => setIsOpen(true)}
+          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
+        > Add Event Positions</button>
+           
+
+          
+        </div>
+
+        {isOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <AlumniForm />
+            <button
+             onClick={() => setIsOpen(false)}
+          type="submit"
+          className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
+           >
+            Submit
+            </button>
+          </div>
+        </div>
+        )}
+      
+        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
@@ -79,7 +135,7 @@ export default function JobOpenings() {
                 <CardTitle className="text-center text-lg font-semibold">
                   {event.title}
                 </CardTitle>
-                <p className="text-center text-gray-700">{event.date}</p>
+                <p className="text-center text-gray-700">{formatDate(event.date)}</p>
                 <p className="text-center text-gray-500">
                   {event.positionsNeeded}
                 </p>

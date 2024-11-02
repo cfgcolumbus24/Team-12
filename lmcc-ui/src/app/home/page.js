@@ -23,7 +23,27 @@ const hottestEvents = [
   },
 ];
 
-const samplePosts = [];
+
+const samplePosts = [
+  {
+    author: "John Doe",
+    content: "Just finished my latest artwork! Inspired by the beauty of nature. 🌿🎨",
+    createdAt: "Nov 1, 2024, 3:45 PM",
+    tags: ["Art", "Nature", "Inspiration"]
+  },
+  {
+    author: "Jane Smith",
+    content: "Excited to announce my upcoming art exhibition at the Downtown Gallery! Hope to see you there! 🖼️✨",
+    createdAt: "Oct 30, 2024, 11:15 AM",
+    tags: ["Exhibition", "Art", "Event"]
+  },
+  {
+    author: "Alex Johnson",
+    content: "Collaborated with amazing local artists for a mural project! Check it out in the city center! 🎉🎨",
+    createdAt: "Oct 28, 2024, 6:00 PM",
+    tags: ["Collaboration", "Mural", "Community"]
+  }
+];
 
 const getRandomColor = (index) => {
   const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
@@ -51,12 +71,55 @@ const fetchTagsForContent = async (content) => {
 
 const Post = ({ post }) => {
   return (
+<<<<<<< HEAD
     <Card className="border rounded-lg p-4 mb-2 shadow-md max-w-md mx-auto">
       <div className="flex items-center mb-2">
         <Avatar className="mr-2 rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center">
           <span className="font-semibold text-sm">{post.author.charAt(0)}</span>
         </Avatar>
         <h4 className="font-semibold text-md">{post.author}</h4>
+=======
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <Navbar />
+
+        <div className="w-full py-8 px-4">
+  <div className="text-center">
+    <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 drop-shadow-lg">
+      Artist Match
+    </h1>
+    <p className="text-lg text-gray-600 mt-3 tracking-wide font-medium">
+      Find and connect with artists!
+    </p>
+  </div>
+</div>
+
+
+        <div className="mb-8 flex justify-center">
+          <Input
+            type="text"
+            placeholder="Search alumni..."
+            className="w-full max-w-md"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        <div className="grid grid-cols-4 gap-8 mt-8">
+          {filteredAlumni.map((alumnus) => (
+            <div key={alumnus.id} onClick={() => openProfileLightbox(alumnus)}>
+              <ProfileUnit
+                name={alumnus.name}
+                avatar={alumnus.picture}
+                topics={alumnus.topics}
+                twitter={alumnus.twitter}
+                instagram={alumnus.instagram}
+                website={alumnus.website}
+              />
+            </div>
+          ))}
+        </div>
+>>>>>>> 67b6393 (Home Page Title Styling)
       </div>
       <p className="text-gray-700 text-sm mb-2">{post.content}</p>
       <small className="text-gray-400 text-xs">{post.createdAt}</small>
