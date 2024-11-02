@@ -100,10 +100,17 @@ export default function AlumniPanel() {
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
 
-        <div className="my-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-800">Artist Match</h1>
-          <p className="text-gray-600 mt-2">Find and connect with artists!</p>
-        </div>
+        <div className="w-full py-8 px-4">
+  <div className="text-center">
+    <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 drop-shadow-lg">
+      Artist Match
+    </h1>
+    <p className="text-lg text-gray-600 mt-3 tracking-wide font-medium">
+      Find and connect with artists!
+    </p>
+  </div>
+</div>
+
 
         <div className="mb-8 flex justify-center">
           <Input
