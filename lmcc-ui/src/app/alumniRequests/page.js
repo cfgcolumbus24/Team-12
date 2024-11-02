@@ -76,8 +76,12 @@ const handleClose = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
+        <div className="my-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-800"> Alumni Job Board</h1>
+          <p className="text-gray-600 mt-2"> Explore exciting job opportunities for our alumni!</p>
 
-        <h1 className="text-4xl font-bold text-center mb-8">Alumni Job Board</h1>
+        </div>
+
 
         {}
         <div className="mb-4 flex justify-center">
@@ -146,6 +150,7 @@ const handleClose = () => {
         </div>
           
       </div>
+      
       
     </div>
         
