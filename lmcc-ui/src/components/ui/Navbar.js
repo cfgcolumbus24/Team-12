@@ -52,9 +52,9 @@ export default function Navbar() {
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/newsFeed" passHref>
+            <Link href="/alumniMatch" passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Post Feed
+                Alumni Match
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

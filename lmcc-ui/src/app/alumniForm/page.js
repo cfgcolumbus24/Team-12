@@ -27,8 +27,8 @@ const RequestForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-4 bg-gray-200"> {/* Grey background */}
-      <h2 className="text-xl font-bold mb-4">Alumni Job Request Form</h2>
-      <form onSubmit={handleFormSubmit} className="space-y-4">
+      <h2 className="text-xl font-bold mb-3">Alumni Job Request Form</h2>
+      <form onSubmit={handleFormSubmit} className="space-y-3">
         <div>
           <label
             htmlFor="name"
@@ -43,7 +43,7 @@ const RequestForm = () => {
             value={formValues.name}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
@@ -60,8 +60,8 @@ const RequestForm = () => {
             value={formValues.details}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
-            rows="4"
+            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
+            rows="3"
           />
         </div>
 
@@ -79,7 +79,7 @@ const RequestForm = () => {
             value={formValues.eventDate}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
@@ -97,7 +97,7 @@ const RequestForm = () => {
             value={formValues.venue}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
@@ -113,11 +113,17 @@ const RequestForm = () => {
             id="staffRequirements"
             value={formValues.staffRequirements}
             onChange={handleInputChange}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
-            rows="3"
+            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
+            rows="2"
           />
         </div>
 
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white font-semibold py-1.5 rounded-md hover:bg-blue-600 transition duration-200"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
