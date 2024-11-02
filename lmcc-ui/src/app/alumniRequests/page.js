@@ -66,17 +66,7 @@ export default function JobOpenings() {
 
 
         {}
-        <div className="mb-4 flex justify-center">
-
-             <button
-          onClick={() => setIsOpen(true)}
-          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
-        > Add Event Positions</button>
-           
-
-          
-        </div>
-
+  
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
