@@ -1,3 +1,4 @@
+
 import ForumButton from '@/components/ForumButton';
 import EventsCard from "@/components/EventsCard";
 import Navbar from '@/components/ui/Navbar';
