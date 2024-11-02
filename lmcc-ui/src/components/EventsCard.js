@@ -15,12 +15,24 @@ import InterestedButton from "./InterestedButton";
 export default function EventsCard({ title, description, date, image }) {
   const [isInterested, setIsInterested] = useState(false);
   const [attendeeCount, setAttendeeCount] = useState(28); // Starting count, adjust as needed
-
+  const picIndex = 1;
   const handleInterestedClick = () => {
     setIsInterested(!isInterested);
     setAttendeeCount((prevCount) =>
       isInterested ? prevCount - 1 : prevCount + 1
     );
+  };
+
+  // Utility function to get random colors for tags
+  const getRandomPicture = (picIndex) => {
+    const pics = [
+      "artPic.jpeg",
+      "bearArtPic.jpg",
+      "carStock.jpg",
+      "coolArtPic.jpeg",
+      "stock1.jpeg",
+    ];
+    return pics[picIndex % pics.length];
   };
 
   return (
@@ -44,8 +56,9 @@ export default function EventsCard({ title, description, date, image }) {
       </CardFooter>
       <div className="flex flex-col items-center w-full m-3 gap-y-7">
         <Attending
-          profileImg="/assets/stock1.jpeg"
+          profileImg={"/assets/" + getRandomPicture(picIndex)}
           attendeeCount={attendeeCount}
+          picIndex={picIndex + 1}
         />
         <InterestedButton
           onClick={handleInterestedClick}

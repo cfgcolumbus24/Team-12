@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1730551823177,
@@ -16,6 +16,66 @@
                 {
                     "date": 1730552747980,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-export default function Attending({ profileImg }) {\n+export default function Attending({ profileImg, attendeeCount }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n@@ -11,9 +11,9 @@\n             zIndex={profileImages.length - index}\n           />\n         ))}\n       </div>\n-      <p>and {28 - profileImages.length} more...</p>\n+      <p>and {attendeeCount - profileImages.length} more...</p>\n     </div>\n   );\n }\n \n"
+                },
+                {
+                    "date": 1730554382361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,11 @@\n-export default function Attending({ profileImg, attendeeCount }) {\n-  const profileImages = [profileImg, profileImg, profileImg];\n+export default function Attending({\n+  profileImg,\n+  profileImg2,\n+  profileImg3,\n+  attendeeCount,\n+}) {\n+  const profileImages = [profileImg, profileImg2, profileImg3];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n       <div className=\"flex w-1/3 relative ml-3\">\n@@ -25,7 +30,9 @@\n         zIndex: zIndex,\n       }}\n     >\n       <img src={profileImg} alt=\"profile\" className=\"rounded-full\" />\n+      <img src={profileImg2} alt=\"profile\" className=\"rounded-full\" />\n+      <img src={profileImg3} alt=\"profile\" className=\"rounded-full\" />\n     </div>\n   );\n }\n"
+                },
+                {
+                    "date": 1730554454218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     </div>\n   );\n }\n \n-function ProfileCircle({ profileImg, zIndex }) {\n+function ProfileCircle({ profileImg, profileImg2, profileImg3, zIndex }) {\n   return (\n     <div\n       className={`rounded-full border border-black border-double p-1`}\n       style={{\n"
+                },
+                {
+                    "date": 1730554522695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,14 @@\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n       <div className=\"flex w-1/3 relative ml-3\">\n-        {profileImages.map((img, index) => (\n+        {profileImages.map((img, img2, img3, index) => (\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n+            profileImg2={img2}\n+            profileImg3={img3}\n             zIndex={profileImages.length - index}\n           />\n         ))}\n       </div>\n"
+                },
+                {
+                    "date": 1730554541719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   const profileImages = [profileImg, profileImg2, profileImg3];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n-      <div className=\"flex w-1/3 relative ml-3\">\n+      <div className=\"flex w-1/5 relative ml-3\">\n         {profileImages.map((img, img2, img3, index) => (\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n"
+                },
+                {
+                    "date": 1730554579830,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         zIndex: zIndex,\n       }}\n     >\n       <img src={profileImg} alt=\"profile\" className=\"rounded-full\" />\n-      <img src={profileImg2} alt=\"profile\" className=\"rounded-full\" />\n-      <img src={profileImg3} alt=\"profile\" className=\"rounded-full\" />\n+      <img src={profileImg2} alt=\"profile2\" className=\"rounded-full\" />\n+      <img src={profileImg3} alt=\"profile3\" className=\"rounded-full\" />\n     </div>\n   );\n }\n"
+                },
+                {
+                    "date": 1730554596760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,16 +8,13 @@\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n       <div className=\"flex w-1/5 relative ml-3\">\n+        profileImg={img}\n+        profileImg2={img2}\n+        profileImg3={img3}\n         {profileImages.map((img, img2, img3, index) => (\n-          <ProfileCircle\n-            key={index}\n-            profileImg={img}\n-            profileImg2={img2}\n-            profileImg3={img3}\n-            zIndex={profileImages.length - index}\n-          />\n+          <ProfileCircle key={index} zIndex={profileImages.length - index} />\n         ))}\n       </div>\n       <p>and {attendeeCount - profileImages.length} more...</p>\n     </div>\n"
+                },
+                {
+                    "date": 1730554620839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,13 +8,16 @@\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n       <div className=\"flex w-1/5 relative ml-3\">\n-        profileImg={img}\n-        profileImg2={img2}\n-        profileImg3={img3}\n         {profileImages.map((img, img2, img3, index) => (\n-          <ProfileCircle key={index} zIndex={profileImages.length - index} />\n+          <ProfileCircle\n+            key={index}\n+            profileImg={img}\n+            profileImg2={img2}\n+            profileImg3={img3}\n+            zIndex={profileImages.length - index}\n+          />\n         ))}\n       </div>\n       <p>and {attendeeCount - profileImages.length} more...</p>\n     </div>\n"
+                },
+                {
+                    "date": 1730554808993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,40 +1,31 @@\n-export default function Attending({\n-  profileImg,\n-  profileImg2,\n-  profileImg3,\n-  attendeeCount,\n-}) {\n-  const profileImages = [profileImg, profileImg2, profileImg3];\n+export default function Attending({ profileImg }) {\n+  const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n-      <div className=\"flex w-1/5 relative ml-3\">\n-        {profileImages.map((img, img2, img3, index) => (\n+      <div className=\"flex w-1/6 relative ml-3\">\n+        {profileImages.map((img, index) => (\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n-            profileImg2={img2}\n-            profileImg3={img3}\n             zIndex={profileImages.length - index}\n           />\n         ))}\n       </div>\n-      <p>and {attendeeCount - profileImages.length} more...</p>\n+      <p>and {28 - profileImages.length} more...</p>\n     </div>\n   );\n }\n \n-function ProfileCircle({ profileImg, profileImg2, profileImg3, zIndex }) {\n+function ProfileCircle({ profileImg, zIndex }) {\n   return (\n     <div\n       className={`rounded-full border border-black border-double p-1`}\n       style={{\n         zIndex: zIndex,\n       }}\n     >\n       <img src={profileImg} alt=\"profile\" className=\"rounded-full\" />\n-      <img src={profileImg2} alt=\"profile2\" className=\"rounded-full\" />\n-      <img src={profileImg3} alt=\"profile3\" className=\"rounded-full\" />\n     </div>\n   );\n }\n"
+                },
+                {
+                    "date": 1730554815344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,18 +2,18 @@\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n-      <div className=\"flex w-1/6 relative ml-3\">\n+      <div className=\"flex w-1/3 relative ml-3\">\n         {profileImages.map((img, index) => (\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n             zIndex={profileImages.length - index}\n           />\n         ))}\n       </div>\n-      <p>and {28 - profileImages.length} more...</p>\n+      <p>and {attendeeCount - profileImages.length} more...</p>\n     </div>\n   );\n }\n \n"
+                },
+                {
+                    "date": 1730554827344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-export default function Attending({ profileImg }) {\n+export default function Attending({ attendeeCount, profileImg }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n     <div className=\"flex gap-x-4 ml-10 items-center\">\n"
+                },
+                {
+                    "date": 1730555425484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+import EventsCard from \"./EventsCard\";\n+import index from EventsCard\n export default function Attending({ attendeeCount, profileImg }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n"
+                },
+                {
+                    "date": 1730555508991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import EventsCard from \"./EventsCard\";\n-import index from EventsCard\n export default function Attending({ attendeeCount, profileImg }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n@@ -10,8 +8,9 @@\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n             zIndex={profileImages.length - index}\n+            picIndex={picIndex + 1}\n           />\n         ))}\n       </div>\n       <p>and {attendeeCount - profileImages.length} more...</p>\n"
+                },
+                {
+                    "date": 1730555529494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import picIndex from EventsCard\n export default function Attending({ attendeeCount, profileImg }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n"
+                },
+                {
+                    "date": 1730555540676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-import picIndex from EventsCard\n export default function Attending({ attendeeCount, profileImg }) {\n   const profileImages = [profileImg, profileImg, profileImg];\n \n   return (\n"
+                },
+                {
+                    "date": 1730555548429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n           <ProfileCircle\n             key={index}\n             profileImg={img}\n             zIndex={profileImages.length - index}\n-            picIndex={picIndex + 1}\n           />\n         ))}\n       </div>\n       <p>and {attendeeCount - profileImages.length} more...</p>\n"
                 }
             ],
             "date": 1730551823177,

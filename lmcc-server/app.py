@@ -12,7 +12,7 @@ CORS(app)
 class OpenAIFacade:
     def __init__(self):
         self.client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-        self.system_message = "You are an AI Specialist that specilaizing in choosing tags for a certain description. Given a description and a set of tags please return all relevent tags ordered by the most confident (first is most condifedent). please return tags seperated by commas. If you cannot find any assocaited tags please just return 1 tag General Here are the Tags you can choose from (Art, Music, Film, Dance, Guitar, Performance, Painting, Piano, Singing, Landscape, and Photography)"
+        self.system_message = "You are an AI Specialist that specilaizing in choosing tags for a certain description. Given a description and a set of tags please return all relevent tags ordered by the most confident (first is most condifedent). please return tags seperated by commas. If you cannot find any assocaited tags please just return 1 tag General Here are the Tags you can choose from (Art, Music, Film, Dance, Guitar, Performance, Painting, Piano, Singing, Landscape, Photography, Sculpture, Acrylic, Modern, Historic, Drums, and Abstract)"
 
     def parse_response(self, response):
         try:
