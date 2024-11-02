@@ -6,9 +6,21 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link"; // Import Link from next/link
 import Navbar from "@/components/ui/Navbar";
+import AlumniForm from "@/app/alumniForm/page";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
+ const [isOpen, setIsOpen] = useState(false);
+
+ const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prevData) => ({ ...prevData, [name]: value }));
+};
+
+const handleClose = () => {
+  setIsOpen(false);
+  setFormData({ title: '', date: '', description: '' }); // Reset the form
+};
 
   const eventsList = [
     {
@@ -59,6 +71,7 @@ export default function JobOpenings() {
     event.title.toLowerCase().includes(query.toLowerCase())
   );
 
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
@@ -68,14 +81,30 @@ export default function JobOpenings() {
 
         {}
         <div className="mb-4 flex justify-center">
-          <Link
-            href="/alumniForm"
-            className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
-          >
-            <span className="mr-2">+</span> Add Event Positions
-          </Link>
+
+             <button
+          onClick={() => setIsOpen(true)}
+          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
+        > Add Event Positions</button>
+           
+
+          
         </div>
 
+        {isOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <AlumniForm />
+          </div>
+        </div>
+        )}
+      
         {}
         <div className="mb-8 flex justify-center">
           <Input
@@ -112,8 +141,13 @@ export default function JobOpenings() {
               </CardContent>
             </Card>
           ))}
+
+
         </div>
+          
       </div>
+      
     </div>
+        
   );
 }
