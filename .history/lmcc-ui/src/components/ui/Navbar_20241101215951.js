@@ -41,7 +41,7 @@ export default function Navbar() {
         <NavigationMenuItem>
           <Link href="/newsFeed" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Posts
+              Post NewsFeed
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
