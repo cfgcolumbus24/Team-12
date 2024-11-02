@@ -8,10 +8,10 @@ import AlumniForm from "@/app/alumniForm/page";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 }
 
@@ -32,7 +32,8 @@ export default function JobOpenings() {
       title: "Career Fair",
       date: "December 1, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
+      image:
+        "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
     },
     // ... other initial events
   ]);
@@ -46,7 +47,9 @@ export default function JobOpenings() {
     const newEventWithId = {
       id: eventsList.length + 1,
       // Use default image if none is provided
-      image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
+      image:
+        newEvent.image ||
+        "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
       ...newEvent,
     };
     setEventsList((prevEvents) => [...prevEvents, newEventWithId]);
@@ -64,30 +67,38 @@ export default function JobOpenings() {
           </p>
         </div>
 
-
         {}
-  
+        <div className="mb-4 flex justify-center">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
+          >
+            {" "}
+            Add Event Positions
+          </button>
+        </div>
+
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
-            <AlumniForm />
-            <button
-             onClick={() => setIsOpen(false)}
-          type="submit"
-          className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
-           >
-            Submit
-            </button>
+            <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+              <AlumniForm />
+              <button
+                onClick={() => setIsOpen(false)}
+                type="submit"
+                className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
+              >
+                Submit
+              </button>
+            </div>
           </div>
-        </div>
         )}
-      
+
         {}
         <div className="mb-8 flex justify-center">
           <Input
@@ -116,7 +127,9 @@ export default function JobOpenings() {
                 <CardTitle className="text-center text-lg font-semibold">
                   {event.title}
                 </CardTitle>
-                <p className="text-center text-gray-700">{formatDate(event.date)}</p>
+                <p className="text-center text-gray-700">
+                  {formatDate(event.date)}
+                </p>
                 <p className="text-center text-gray-500">
                   {event.positionsNeeded}
                 </p>

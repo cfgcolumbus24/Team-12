@@ -45,9 +45,7 @@ export default function LoginPage() {
       const result = await signInWithGoogle();
       const user = result.user;
 
-      if (user) {
-        router.push("/home");
-      }
+      router.push("/home");
     } catch (error) {
       console.error("Google sign-in error:", error);
       setError("There was an error signing in with Google. Please try again.");

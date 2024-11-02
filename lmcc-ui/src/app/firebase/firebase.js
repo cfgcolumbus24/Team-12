@@ -1,44 +1,64 @@
 "use client";
 import { initializeApp } from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import firebaseConfig from "./firebaseConfig";
-import { getAuth } from "firebase/auth";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
 import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import firebaseConfig from "./firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 export const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("successful user created: " + user);
+      console.log("User created successfully:", user);
       return user;
     })
     .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
+      console.error("Error creating user:", error.message);
       throw error;
     });
+};
+
+export const addUserToDatabase = async (
+  userId,
+  name,
+  email,
+  role,
+  profileImg
+) => {
+  try {
+    await setDoc(doc(db, "users", userId), {
+      name,
+      email,
+      role,
+      profileImg,
+    });
+    console.log("User added to database successfully");
+  } catch (error) {
+    console.error("Error adding user to database:", error.message);
+    throw error;
+  }
 };
 
 export const loginUser = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("successful user logged in: " + user);
+      console.log("User logged in successfully:", user);
+      return user;
     })
     .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
+      console.error("Error logging in user:", error.message);
       throw error;
     });
 };
@@ -47,10 +67,18 @@ export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider);
-    console.log("User signed in:", result);
-    return result;
+    const user = result.user;
+    await addUserToDatabase(
+      user.uid,
+      user.displayName,
+      user.email,
+      "user",
+      user.photoURL
+    );
+    console.log("User signed in with Google and added to database:", user);
+    return user;
   } catch (error) {
-    console.error("Error signing in with Google:", error);
+    console.error("Error signing in with Google:", error.message);
     throw error;
   }
 };
