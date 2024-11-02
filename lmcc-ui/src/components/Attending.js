@@ -1,4 +1,4 @@
-export default function Attending({ profileImg, attendeeCount }) {
+export default function Attending({ attendeeCount, profileImg }) {
   const profileImages = [profileImg, profileImg, profileImg];
 
   return (
