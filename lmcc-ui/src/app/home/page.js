@@ -23,7 +23,27 @@ const hottestEvents = [
   },
 ];
 
-const samplePosts = [];
+
+const samplePosts = [
+  {
+    author: "John Doe",
+    content: "Just finished my latest artwork! Inspired by the beauty of nature. 🌿🎨",
+    createdAt: "Nov 1, 2024, 3:45 PM",
+    tags: ["Art", "Nature", "Inspiration"]
+  },
+  {
+    author: "Jane Smith",
+    content: "Excited to announce my upcoming art exhibition at the Downtown Gallery! Hope to see you there! 🖼️✨",
+    createdAt: "Oct 30, 2024, 11:15 AM",
+    tags: ["Exhibition", "Art", "Event"]
+  },
+  {
+    author: "Alex Johnson",
+    content: "Collaborated with amazing local artists for a mural project! Check it out in the city center! 🎉🎨",
+    createdAt: "Oct 28, 2024, 6:00 PM",
+    tags: ["Collaboration", "Mural", "Community"]
+  }
+];
 
 const getRandomColor = (index) => {
   const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
