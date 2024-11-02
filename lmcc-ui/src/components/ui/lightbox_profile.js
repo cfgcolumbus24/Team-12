@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { FaInstagram, FaGlobe, FaTwitter } from "react-icons/fa";
 
-const Lightbox = ({ isOpen, onClose, content, name, picture, location, time }) => {
+const ProfileLightbox = ({ isOpen, onClose, name, avatar, bio, topics, number, lmcc, events, instagram, website, twitter }) => {
   if (!isOpen) return null;
 
   return (
@@ -12,29 +14,52 @@ const Lightbox = ({ isOpen, onClose, content, name, picture, location, time }) =
             &times;
           </button>
         </div>
-        <div className="p-4">
-          {content}
-        </div>
-        <div className="flex justify-center w-full">
-          <img src={picture} alt="Event Image" className="max-w-full h-auto rounded-lg" />
-        </div>
-        <div className="p-4 text-xl">
-          Event Name: <span className="font-semibold">{name}</span>
-        </div>
-        <div className="mb-2 border-t border-dashed border-gray-300"></div>
-        <div className="p-4 text-lg">
-          Location: <span className="font-semibold">{location}</span>
-          <br/>
-
-          Time: <span className="font-semibold">{time}</span>
-          Hosted by: 
-        </div>
-        <div className="mt-4">
-          <Button onClick={handleRSVP} variant="outline">RSVP</Button>
+        <div className="flex flex-col items-center">
+          <img src={avatar} alt={`${name}'s avatar`} className="h-32 w-32 rounded-full" />
+          <h2 className="mt-4 text-lg font-semibold">{name}</h2>
+          <div className="flex space-x-2 items-center justify-center">
+            {topics.first && (
+              <Badge className="h-5" variant="outline">
+                {topics.first}
+              </Badge>
+            )}
+            {topics.second && (
+              <Badge className="h-5" variant="outline">
+                {topics.second}
+              </Badge>
+            )}
+          </div>
+          <div className="mt-4">
+            <h3 className="text-md font-semibold text-center">About Me</h3>
+            <p className="text-sm text-gray-600 text-center">{bio}</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-md font-semibold text-center">LMCC Experiences</h3>
+            <p className="text-sm text-gray-600 text-center">{lmcc}</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-md font-semibold text-center">Portfolio</h3>
+            <p className="text-sm text-gray-600 text-center">{events}</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-md font-semibold text-center">Phone Number</h3>
+            <p className="text-sm text-gray-600">{number}</p>
+          </div>
+          <div className="flex space-x-2 items-center mt-4">
+            <a href={instagram} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline"><FaInstagram /></Button>
+            </a>
+            <a href={website} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline"><FaGlobe /></Button>
+            </a>
+            <a href={twitter} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline"><FaTwitter /></Button>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Lightbox;
+export default ProfileLightbox;
