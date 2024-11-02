@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link"; // Import Link from next/link
 import Navbar from "@/components/ui/Navbar";
 import AlumniForm from "@/app/alumniForm/page";
-
+// hi
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
  const [isOpen, setIsOpen] = useState(false);
