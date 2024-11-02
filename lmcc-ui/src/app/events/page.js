@@ -90,9 +90,10 @@ export default function Events() {
       </div>
 
       {/* Floating Forum Button */}
-      <div className="fixed bottom-8 right-8">
+      <div className="fixed bottom-7 right-10">
         <ForumButton />
       </div>
+
     </div>
   );
 }

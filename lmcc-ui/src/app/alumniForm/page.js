@@ -24,6 +24,7 @@ const RequestForm = () => {
     console.log(formValues);
   };
 
+
   return (
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-xl font-bold mb-4">Alumni Job Request Form</h2>
@@ -117,12 +118,6 @@ const RequestForm = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
-        >
-          Submit
-        </button>
       </form>
     </div>
   );
