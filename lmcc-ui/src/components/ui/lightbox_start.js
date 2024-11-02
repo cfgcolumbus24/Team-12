@@ -1,8 +1,11 @@
+"use client";
 import React from 'react';
 import { Button } from "@/components/ui/button";
-
+import { useRouter } from 'next/navigation';
 
 const Lightbox = ({ isOpen, onClose, content, picture, name, location, time, host }) => {
+  const router = useRouter();
+
   if (!isOpen) return null;
 
   return (
@@ -19,11 +22,10 @@ const Lightbox = ({ isOpen, onClose, content, picture, name, location, time, hos
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="bg-black bg-opacity-60 rounded-lg p-4 max-w-xs w-full">
-
             <div className="relative z-20 text-white">
               <div className="text-lg mt-2">{content}</div>
               <div className="mt-4">
-                <Button onClick={() => alert("RSVP sent!")} variant="outline" className="w-full text-white border-white">
+                <Button onClick={() => router.push('/events')} variant="outline" className="w-full text-white border-white">
                   Interested!
                 </Button>
               </div>

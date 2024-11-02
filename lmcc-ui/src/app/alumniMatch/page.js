@@ -4,12 +4,10 @@ import { Input } from "@/components/ui/input";
 import Navbar from "@/components/ui/Navbar";
 import ProfileUnit from "../profileunit";
 import { useState, useEffect } from "react";
-import Lightbox from "@/components/ui/lightbox_start";
 import ProfileLightbox from "@/components/ui/lightbox_profile";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false); 
   const [isProfileLightboxOpen, setIsProfileLightboxOpen] = useState(false);
   const [selectedAlumnus, setSelectedAlumnus] = useState(null);
 
@@ -85,9 +83,6 @@ export default function AlumniPanel() {
     alumnus.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  useEffect(() => {
-    setIsLightboxOpen(true); 
-  }, []);
 
   const openProfileLightbox = (alumnus) => {
     setSelectedAlumnus(alumnus);
@@ -104,7 +99,6 @@ export default function AlumniPanel() {
         <p className="text-gray-500 mt-3 text-lg">Find and connect with artists!</p>
         </div>
 
-        {/* Search Bar */}
         <div className="flex justify-center mb-6">
           <Input
             type="text"
@@ -115,7 +109,6 @@ export default function AlumniPanel() {
           />
         </div>
 
-        {/* Alumni Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredAlumni.map((alumnus) => (
             <div
@@ -136,21 +129,7 @@ export default function AlumniPanel() {
         </div>
       </div>
 
-      {/* Initial Lightbox */}
-      {isLightboxOpen && (
-        <Lightbox
-          isOpen={isLightboxOpen}
-          onClose={() => setIsLightboxOpen(false)}
-          content={<h1 className="text-2xl font-bold text-center">Check Out What's Coming Soon!</h1>}
-          name="Party of the Year"
-          location="Governor's Island"
-          time="12 PM on Saturday, November 2"
-          picture="https://wallpapercave.com/wp/wp9977857.jpg"
-          host="Some alumni"
-        />
-      )}
 
-      {/* Profile Lightbox */}
       {isProfileLightboxOpen && selectedAlumnus && (
         <ProfileLightbox
           isOpen={isProfileLightboxOpen}

@@ -1,28 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
+import Lightbox from "@/components/ui/lightbox_start";
 
 const hottestEvents = [
   {
-    title: "Art & Wine Festival",
-    date: "Nov 3, 2024",
-    location: "Downtown Athens",
+    title: "Music Festival",
+    date: "Nov 2, 2024",
+    time: "5 PM",
+    location: "Central Park",
   },
-  { title: "Live Jazz Night", date: "Nov 4, 2024", location: "Blue Note Cafe" },
+  { title: "Live Jazz Night", date: "Nov 5, 2024", time: "8 PM", location: "Blue Note" },
   {
     title: "Sculpture Exhibition",
-    date: "Nov 5, 2024",
-    location: "City Art Museum",
+    date: "Nov 7, 2024",
+    time: "5 PM",
+    location: "Bronx Museum",
   },
-  {
-    title: "Photography Workshop",
-    date: "Nov 6, 2024",
-    location: "Artist's Hub",
-  },
-  { title: "Charity Art Auction", date: "Nov 7, 2024", location: "Grand Hall" },
 ];
 
 const samplePosts = [];
@@ -110,6 +108,7 @@ const EventsWidget = ({ events }) => {
           >
             <h4 className="text-md font-bold">{event.title}</h4>
             <p className="text-sm text-gray-500">{event.date}</p>
+            <p className="text-sm text-gray-500">{event.time}</p>
             <p className="text-sm text-gray-400">{event.location}</p>
           </li>
         ))}
@@ -170,6 +169,7 @@ const PostForm = ({ onPostCreate }) => {
 
 const Newsfeed = () => {
   const [posts, setPosts] = useState(samplePosts);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handlePostCreate = async (content) => {
     const tags = await fetchTagsForContent(content);
@@ -181,6 +181,10 @@ const Newsfeed = () => {
     };
     setPosts([newPost, ...posts]);
   };
+
+  useEffect(() => {
+    setIsLightboxOpen(true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
@@ -205,6 +209,18 @@ const Newsfeed = () => {
             </div>
           </div>
         </div>
+        {isLightboxOpen && (
+          <Lightbox
+            isOpen={isLightboxOpen}
+            onClose={() => setIsLightboxOpen(false)}
+            content={<h1 className="text-2xl font-bold text-center">Welcome! Check Out What's Coming Soon:</h1>}
+            name="Music Festival"
+            location="Central Park"
+            time="5 PM on November 2, 2024"
+            picture="https://wallpapercave.com/wp/wp9977857.jpg"
+            host="Music Enthusiasts"
+          />
+        )}
       </div>
   );
 };
