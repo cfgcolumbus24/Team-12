@@ -4,13 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'; // Import Link from next/link
+import Link from "next/link"; // Import Link from next/link
 import Navbar from "@/components/ui/Navbar";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
 
-  // Sample data for upcoming events (replace with real data)
   const eventsList = [
     {
       id: 1,
@@ -56,26 +55,28 @@ export default function JobOpenings() {
     },
   ];
 
-  // Filter events based on the search term
-  const searchedEvents = eventsList.filter((event) =>
+    const searchedEvents = eventsList.filter((event) =>
     event.title.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
-  
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-      <Navbar />
-        <h1 className="text-4xl font-bold text-center mb-8"> Alumni Job Positions </h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <Navbar />
 
-        {/* "+" Button to open Event Request Form */}
+        <h1 className="text-4xl font-bold text-center mb-8">Alumni Job Board</h1>
+
+        {}
         <div className="mb-4 flex justify-center">
-          <Link href="/alumniForm" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
+          <Link
+            href="/alumniForm"
+            className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
+          >
             <span className="mr-2">+</span> Add Event Positions
           </Link>
         </div>
 
-        {/* Search Input */}
+        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
@@ -105,7 +106,9 @@ export default function JobOpenings() {
                   {event.title}
                 </CardTitle>
                 <p className="text-center text-gray-700">{event.date}</p>
-                <p className="text-center text-gray-500">{event.positionsNeeded}</p>
+                <p className="text-center text-gray-500">
+                  {event.positionsNeeded}
+                </p>
               </CardContent>
             </Card>
           ))}
@@ -114,4 +117,3 @@ export default function JobOpenings() {
     </div>
   );
 }
-
