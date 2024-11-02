@@ -114,10 +114,7 @@ const ProfileHeader = () => {
     <div className="flex flex-col items-center mb-8 p-4 bg-blue-100 rounded shadow-lg w-[800px] mx-auto">
       <div className="relative">
         <Avatar className="h-36 w-36 rounded-full border-4 border-white shadow-lg mb-4 transition-transform duration-300 hover:scale-105 bg-blue-500">
-          <AvatarImage
-            referrerPolicy="no-referrer"
-            src={loading ? null : currentUser.photoURL}
-          />
+          
           <AvatarFallback className="text-3xl font-bold text-white">
             AP
           </AvatarFallback>

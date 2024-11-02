@@ -68,13 +68,7 @@ export default function Navbar() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="h-10 w-10 p-0">
-              <img
-                src={loading ? null : currentUser.photoURL}
-                alt="User Profile"
-                width={40}
-                height={40}
-                className="rounded-full h-10 w-10 cursor-pointer border border-gray-300"
-              />
+             
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <NavigationMenuList className="flex flex-col items-start p-2 bg-white rounded shadow-lg space-y-2">
