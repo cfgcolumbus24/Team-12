@@ -3,16 +3,14 @@
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link"; // Import Link from next/link
 import Navbar from "@/components/ui/Navbar";
 import AlumniForm from "@/app/alumniForm/page";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
-  const eventsList = [
+  const [eventsList, setEventsList] = useState([
+    // Initial events
     {
       id: 1,
       title: "Networking Dinner",
@@ -27,39 +25,24 @@ export default function JobOpenings() {
       positionsNeeded: "Booth Representatives, Organizers",
       image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
     },
-    {
-      id: 3,
-      title: "Alumni Panel Discussion",
-      date: "January 10, 2025",
-      positionsNeeded: "Moderators, Panelists",
-      image: "https://e7.pngegg.com/pngimages/494/134/png-clipart-human-resource-management-business-organization-panel-discussion-text-human-resource-management-thumbnail.png",
-    },
-    {
-      id: 4,
-      title: "Annual Alumni Reunion",
-      date: "February 20, 2025",
-      positionsNeeded: "Planning Committee, Event Staff",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF9_AlQkEUzP3N9rl4ph-LmGRpzfc36kCSQA&s",
-    },
-    {
-      id: 5,
-      title: "Workshop on Career Development",
-      date: "March 5, 2025",
-      positionsNeeded: "Facilitators, Helpers",
-      image: "https://cdni.iconscout.com/illustration/premium/thumb/career-development-illustration-download-in-svg-png-gif-file-formats--path-logo-opportunities-promotions-advancement-school-education-illustrations-3575375.png",
-    },
-    {
-      id: 6,
-      title: "Mentorship Program Kickoff",
-      date: "April 12, 2025",
-      positionsNeeded: "Mentors, Mentees",
-      image: "https://irq.sirweb.org/downloads/173/download/f706e348273845b8859e90c08c3ddcda.png?cb=baadf7eed57269eaa9f724fe18b337b1",
-    },
-  ];
+    // ... other initial events
+  ]);
 
-  const searchedEvents = eventsList.filter((event) =>
-    event.title.toLowerCase().includes(query.toLowerCase())
-  );
+  const searchedEvents = eventsList.filter((event) => {
+    const title = event.title || ""; // Ensure title is a string
+    return title.toLowerCase().includes(query.toLowerCase());
+  });
+
+  const handleFormSubmit = (newEvent) => {
+    const newEventWithId = {
+      id: eventsList.length + 1,
+      // Use default image if none is provided
+      image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
+      ...newEvent,
+    };
+    setEventsList((prevEvents) => [...prevEvents, newEventWithId]);
+    setIsOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-6 relative">
@@ -82,7 +65,6 @@ export default function JobOpenings() {
           />
         </div>
 
-        {/* Events Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {searchedEvents.map((event) => (
             <Card key={event.id} className="shadow-md bg-blue-100">
@@ -110,28 +92,26 @@ export default function JobOpenings() {
         </div>
       </div>
 
-     {/* Floating Box Button */}
-<button
-  onClick={() => setIsOpen(true)}
-  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
->
-  Add Job Positions
-</button>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+      >
+        Add Job Positions
+      </button>
 
-    {isOpen && (
-      <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
-          >
-            ✕
-          </button>
-          <AlumniForm />
+      {isOpen && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
+            >
+              ✕
+            </button>
+            <AlumniForm onSubmit={handleFormSubmit} />
+          </div>
         </div>
-      </div>
-)}
-
+      )}
     </div>
   );
 }
