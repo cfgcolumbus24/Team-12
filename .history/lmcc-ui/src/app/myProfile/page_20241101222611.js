@@ -81,7 +81,6 @@ const PostList = ({ posts }) => {
 const MyProfile = () => {
   return (
     <div className="max-w-lg mx-auto p-4">
-      <Navbar></Navbar>
       <ProfileHeader />
       <h3 className="text-xl font-semibold mb-4 text-center">My Posts</h3>
       <PostList posts={sortedPosts} />

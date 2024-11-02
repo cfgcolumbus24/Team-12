@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1730502093105,
@@ -28,6 +28,14 @@
                 {
                     "date": 1730513538552,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Posts\n+              Post Feed\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n       </NavigationMenuList>\n"
+                },
+                {
+                    "date": 1730514416294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,22 +24,29 @@\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n-          <Link href=\"/form\" passHref>\n+          <Link href=\"/myProfile\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Events Form\n+              My Profile\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n-          <Link href=\"/discussion\" passHref>\n+          <Link href=\"/events\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Discussion\n+              Events\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n+          <Link href=\"/alumniRequests\" passHref>\n+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n+              Alumni Job Board\n+            </NavigationMenuLink>\n+          </Link>\n+        </NavigationMenuItem>\n+        <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n               Post Feed\n             </NavigationMenuLink>\n"
+                },
+                {
+                    "date": 1730520419341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n import Link from \"next/link\";\n \n export default function Navbar() {\n   return (\n-    <NavigationMenu>\n+    <NavigationMenu className=\"mb-16\">\n       <NavigationMenuList className=\"flex space-x-4\">\n         {\" \"}\n         <NavigationMenuItem>\n           <Link href=\"/home\" passHref>\n"
                 }
             ],
             "date": 1730502093105,
