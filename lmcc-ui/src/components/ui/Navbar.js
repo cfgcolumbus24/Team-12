@@ -58,6 +58,13 @@ export default function Navbar() {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/adminControl" passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Admin Dashboard
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
