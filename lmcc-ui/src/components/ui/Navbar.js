@@ -4,12 +4,10 @@ import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { useCurrentUser } from "@/app/firebase/firebase";
@@ -74,14 +72,14 @@ export default function Navbar() {
               <NavigationMenuList className="flex flex-col items-start p-2 bg-white rounded shadow-lg space-y-2">
                 <NavigationMenuItem>
                   <Link href="/myProfile" passHref>
-                    <NavigationMenuLink className="text-sm hover:text-blue-300">
+                    <NavigationMenuLink className="text-sm whitespace-nowrap hover:text-blue-300 font-medium">
                       My Profile
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/logout" passHref>
-                    <NavigationMenuLink className="text-sm hover:text-red-300">
+                    <NavigationMenuLink className="text-sm whitespace-nowrap hover:text-red-300 font-medium">
                       Logout
                     </NavigationMenuLink>
                   </Link>
