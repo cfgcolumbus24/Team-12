@@ -80,11 +80,13 @@ const PostList = ({ posts }) => {
 // Main MyProfile Component
 const MyProfile = () => {
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <Navbar></Navbar>
-      <ProfileHeader />
-      <h3 className="text-xl font-semibold mb-4 text-center">My Posts</h3>
-      <PostList posts={sortedPosts} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <Navbar />
+        <ProfileHeader />
+        <h3 className="text-3xl font-semibold mb-4 text-center">My Posts</h3>
+        <PostList posts={sortedPosts} />
+      </div>
     </div>
   );
 };

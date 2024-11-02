@@ -3,10 +3,12 @@
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/ui/Navbar";
 import ProfileUnit from "../profileunit";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Lightbox from "@/components/ui/lightbox_start";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const alumniData = [
     {
@@ -48,18 +50,20 @@ export default function AlumniPanel() {
     alumnus.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  useEffect(() => {
+    setIsLightboxOpen(true);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
 
-        {}
         <div className="my-8 text-center">
           <h1 className="text-3xl font-bold text-gray-800">Artist Match</h1>
           <p className="text-gray-600 mt-2">Find and connect with artists!</p>
         </div>
 
-        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
@@ -70,16 +74,13 @@ export default function AlumniPanel() {
           />
         </div>
 
-        {}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-4 gap-8 mt-8">
           {filteredAlumni.map((alumnus) => (
             <ProfileUnit
               key={alumnus.id}
               name={alumnus.name}
               avatar={alumnus.picture}
-              bio={alumnus.bio}
               topics={alumnus.topics}
-              number={alumnus.contact}
               twitter={alumnus.twitter}
               instagram={alumnus.instagram}
               website={alumnus.portfolio}
@@ -87,6 +88,23 @@ export default function AlumniPanel() {
           ))}
         </div>
       </div>
+
+      {isLightboxOpen && (
+        <Lightbox
+          isOpen={isLightboxOpen}
+          onClose={() => setIsLightboxOpen(false)}
+          content={
+            <h1 className="text-2xl font-bold text-center">
+              Check Out What's Coming Soon!
+            </h1>
+          }
+          name={"Party of the Year"}
+          location={"Governor's Island"}
+          time={"12 PM on Saturday, November 2"}
+          picture={"https://wallpapercave.com/wp/wp9977857.jpg"}
+          host={"Some alumni"}
+        />
+      )}
     </div>
   );
 }

@@ -63,18 +63,22 @@ export default function JobOpenings() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
+        <div className="my-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-800"> Alumni Job Board</h1>
+          <p className="text-gray-600 mt-2"> Explore exciting job opportunities for our alumni!</p>
 
-        <h1 className="text-4xl font-bold text-center mb-8">Alumni Job Board</h1>
-
-        {}
-        <div className="mb-4 flex justify-center">
-          <Link
-            href="/alumniForm"
-            className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
-          >
-            <span className="mr-2">+</span> Add Event Positions
-          </Link>
         </div>
+
+
+        <div className="fixed bottom-8 right-8">
+  <Link
+    href="/alumniForm"
+    className="flex items-center bg-blue-500 text-white py-2 px-3 rounded-md shadow-lg hover:bg-blue-600 transition duration-200"
+  >
+    <span className="mr-1">+</span> Add Event Positions
+  </Link>
+</div>
+
 
         {}
         <div className="mb-8 flex justify-center">
@@ -114,6 +118,7 @@ export default function JobOpenings() {
           ))}
         </div>
       </div>
+      
     </div>
   );
 }
