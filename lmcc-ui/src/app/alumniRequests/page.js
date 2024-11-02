@@ -69,13 +69,13 @@ export default function JobOpenings() {
 
         {}
         <div className="mb-4 flex justify-center">
-          <button
+          {/* <button
             onClick={() => setIsOpen(true)}
             className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
           >
             {" "}
             Add Event Positions
-          </button>
+          </button> */}
         </div>
 
         {isOpen && (
@@ -103,7 +103,7 @@ export default function JobOpenings() {
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
-            placeholder="Search events..."
+            placeholder="Search jobs..."
             className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
