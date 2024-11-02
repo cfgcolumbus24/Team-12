@@ -7,20 +7,10 @@ import Image from "next/image";
 import Link from "next/link"; // Import Link from next/link
 import Navbar from "@/components/ui/Navbar";
 import AlumniForm from "@/app/alumniForm/page";
-// hi
+
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
- const [isOpen, setIsOpen] = useState(false);
-
- const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData((prevData) => ({ ...prevData, [name]: value }));
-};
-
-const handleClose = () => {
-  setIsOpen(false);
-  setFormData({ title: '', date: '', description: '' }); // Reset the form
-};
+  const [isOpen, setIsOpen] = useState(false);
 
   const eventsList = [
     {
@@ -67,59 +57,26 @@ const handleClose = () => {
     },
   ];
 
-    const searchedEvents = eventsList.filter((event) =>
+  const searchedEvents = eventsList.filter((event) =>
     event.title.toLowerCase().includes(query.toLowerCase())
   );
 
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-6 relative">
       <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
         <Navbar />
         <div className="my-8 text-center">
-        <h1 className="text-4xl font-bold text-blue-800">Alumni Job Board</h1>
+          <h1 className="text-4xl font-bold text-blue-800">Alumni Job Board</h1>
           <p className="text-gray-500 mt-3 text-lg">
-          Explore exciting job opportunities for our alumni!
+            Explore exciting job opportunities for our alumni!
           </p>
-        
-
         </div>
 
-
-        {}
-        <div className="flex justify-center my-6">
-
-             <button
-          onClick={() => setIsOpen(true)}
-          className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
-          > Add Event Positions</button>
-           
-
-          
-        </div>
-
-        {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
-            <AlumniForm />
-          </div>
-        </div>
-        )}
-      
-        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
             placeholder="Search events..."
-            className="w-full max-w-md"
             className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
-
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -150,14 +107,31 @@ const handleClose = () => {
               </CardContent>
             </Card>
           ))}
-
-
         </div>
-          
       </div>
-      
-      
+
+     {/* Floating Box Button */}
+<button
+  onClick={() => setIsOpen(true)}
+  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+>
+  Add Job Positions
+</button>
+
+    {isOpen && (
+      <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
+          >
+            ✕
+          </button>
+          <AlumniForm />
+        </div>
+      </div>
+)}
+
     </div>
-        
   );
 }
