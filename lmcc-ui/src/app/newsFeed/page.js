@@ -8,42 +8,74 @@ import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
 
+
 // Sample posts to display when the app is loaded
 const samplePosts = [
   {
     author: "Artist One",
     content: "Excited to share my latest artwork! Check it out in my gallery.",
     createdAt: new Date().toLocaleString(),
+    tags: ["Art", "Gallery"]
   },
   {
     author: "Artist Two",
     content:
       "Just finished a new mural in downtown! Can’t wait for you all to see it!",
     createdAt: new Date().toLocaleString(),
+    tags: ["Mural", "Downtown", "Art"]
   },
   {
     author: "Artist Three",
     content:
       "I will be live streaming my painting session this weekend! Join me!",
     createdAt: new Date().toLocaleString(),
+    tags: ["Live Stream", "Painting", "Event"]
+  },
+  {
+    author: "Artist Four",
+    content:
+      "Looking to connect with any Alumni who play guitar!",
+    createdAt: new Date().toLocaleString(),
+    tags: ["Networking", "Alumni", "Music"]
   },
 ];
 
 // Post Component to display individual posts
 const Post = ({ post }) => {
   return (
-    <Card className="border rounded p-4 mb-2 shadow">
+    <Card className="border rounded-lg p-4 mb-2 shadow-md max-w-md mx-auto">
       <div className="flex items-center mb-2">
-        <Avatar className="mr-2">
-          <span className="font-bold">{post.author.charAt(0)}</span>{" "}
-          {/* Just a placeholder for the avatar */}
+        <Avatar className="mr-2 rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center">
+          <span className="font-semibold text-sm">{post.author.charAt(0)}</span>
         </Avatar>
-        <h4 className="font-bold">{post.author}</h4>
+        <h4 className="font-semibold text-md">{post.author}</h4>
       </div>
-      <p>{post.content}</p>
-      <small className="text-gray-500">{post.createdAt}</small>
+      <p className="text-gray-700 text-sm mb-2">{post.content}</p>
+      <small className="text-gray-400 text-xs">{post.createdAt}</small>
+      
+      {/* Tags Section */}
+      <div className="flex flex-wrap gap-2 mt-3">
+        {post.tags.map((tag, index) => (
+          <span
+            key={index}
+            className="text-xs font-semibold py-1 px-3 rounded-full"
+            style={{
+              backgroundColor: getRandomColor(index),
+              color: "white"
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
     </Card>
   );
+};
+
+// Utility function to get random colors for tags
+const getRandomColor = (index) => {
+  const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
+  return colors[index % colors.length];
 };
 
 // PostList Component to display all posts
@@ -72,37 +104,63 @@ const PostForm = ({ onPostCreate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
-      <Textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="What's on your mind?"
-        rows={4}
-        className="w-full mb-2"
-      />
-      <Button type="submit" className="w-full">
-        Post
-      </Button>
-    </form>
+    <div className="mb-4 p-3 max-w-md mx-auto border rounded-xl shadow-md bg-white text-black">
+      <form onSubmit={handleSubmit} className="flex items-center space-x-3">
+        <Avatar className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+          <span className="font-bold text-white">A</span> {/* Placeholder avatar */}
+        </Avatar>
+        <input
+          type="text"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Engage with your community."
+          className="flex-grow p-2 rounded-full border border-black bg-white text-sm placeholder-black focus:outline-none"
+        />
+      </form>
+      <div className="flex items-center justify-between mt-3 px-2">
+        <button
+          type="button"
+          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+        >
+          <span className="text-blue-400">📷</span>
+          <span className="text-sm">Media</span>
+        </button>
+        <button
+          type="button"
+          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+        >
+          <span className="text-yellow-400">📅</span>
+          <span className="text-sm">Event</span>
+        </button>
+        <button
+          type="button"
+          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+        >
+          <span className="text-red-400">📝</span>
+          <span className="text-sm">Write article</span>
+        </button>
+      </div>
+    </div>
   );
 };
 
 // Main Newsfeed Component
 const Newsfeed = () => {
-  const [posts, setPosts] = useState(samplePosts); // Initialize with sample posts
+  const [posts, setPosts] = useState(samplePosts);
 
   const handlePostCreate = (content) => {
     const newPost = {
-      author: "Artist Name", // Replace this with the actual artist's name
+      author: "Artist Name",
       content,
-      createdAt: new Date().toLocaleString(), // Current date/time
+      createdAt: new Date().toLocaleString(),
+      tags: ["New Post", "Community"], // Default tags for new posts
     };
-    setPosts([newPost, ...posts]); // Add new post at the beginning of the list
+    setPosts([newPost, ...posts]);
   };
 
   return (
     <div className="max-w-lg mx-auto p-4">
-      <Navbar></Navbar>
+      <Navbar />
       <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
       <PostForm onPostCreate={handlePostCreate} />
       <PostList posts={posts} />
@@ -116,3 +174,4 @@ const Page = () => {
 };
 
 export default Page;
+
