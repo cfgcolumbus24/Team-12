@@ -20,9 +20,30 @@ export default function JobOpenings() {
     {
       id: 2,
       title: "Career Fair",
-      date: "December 1, 2024",
+      date: "December 21, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
+      image: "https://iibec.org/wp-content/uploads/MENTORING-CLIPART.png",
+    },
+    {
+      id: 3,
+      title: "Panel Discussion",
+      date: "January 13, 2025",
+      positionsNeeded: "Event Coordinator, Volunteers",
+      image: "https://cdn-icons-png.freepik.com/512/7653/7653748.png",
+    },
+    {
+      id: 4,
+      title: "Alumni Panel Discussion",
+      date: "January 17, 2025",
+      positionsNeeded: "Event Coordinator, Volunteers",
+      image: "https://cdn-icons-png.flaticon.com/512/12448/12448188.png",
+    },
+    {
+      id: 5,
+      title: "Mentorship Opportunity",
+      date: "February 15, 2025",
+      positionsNeeded: "Event Coordinator, Volunteers",
+      image: "https://iibec.org/wp-content/uploads/MENTORING-CLIPART.png",
     },
   ]);
 
@@ -34,7 +55,7 @@ export default function JobOpenings() {
   const handleFormSubmit = (newEvent) => {
     const newEventWithId = {
       id: eventsList.length + 1,
-      image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
+      image: newEvent.image || "https://iibec.org/wp-content/uploads/MENTORING-CLIPART.png",
       ...newEvent,
     };
     setEventsList((prevEvents) => [...prevEvents, newEventWithId]);

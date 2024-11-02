@@ -1,3 +1,4 @@
+"use client";
 
 import ForumButton from '@/components/ForumButton';
 import EventsCard from "@/components/EventsCard";
