@@ -1,54 +1,56 @@
-// app/newsFeed/page.js
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
 
-
 const hottestEvents = [
-  { title: "Art & Wine Festival", date: "Nov 3, 2024", location: "Downtown Athens" },
+  {
+    title: "Art & Wine Festival",
+    date: "Nov 3, 2024",
+    location: "Downtown Athens",
+  },
   { title: "Live Jazz Night", date: "Nov 4, 2024", location: "Blue Note Cafe" },
-  { title: "Sculpture Exhibition", date: "Nov 5, 2024", location: "City Art Museum" },
-  { title: "Photography Workshop", date: "Nov 6, 2024", location: "Artist's Hub" },
+  {
+    title: "Sculpture Exhibition",
+    date: "Nov 5, 2024",
+    location: "City Art Museum",
+  },
+  {
+    title: "Photography Workshop",
+    date: "Nov 6, 2024",
+    location: "Artist's Hub",
+  },
   { title: "Charity Art Auction", date: "Nov 7, 2024", location: "Grand Hall" },
 ];
 
-// Sample posts to display when the app is loaded
-const samplePosts = [
-  {
-    author: "Artist One",
-    content: "Excited to share my latest artwork! Check it out in my gallery.",
-    createdAt: new Date().toLocaleString(),
-    tags: ["Art", "Gallery"]
-  },
-  {
-    author: "Artist Two",
-    content:
-      "Just finished a new mural in downtown! Can’t wait for you all to see it!",
-    createdAt: new Date().toLocaleString(),
-    tags: ["Mural", "Downtown", "Art"]
-  },
-  {
-    author: "Artist Three",
-    content:
-      "I will be live streaming my painting session this weekend! Join me!",
-    createdAt: new Date().toLocaleString(),
-    tags: ["Live Stream", "Painting", "Event"]
-  },
-  {
-    author: "Artist Four",
-    content:
-      "Looking to connect with any Alumni who play guitar!",
-    createdAt: new Date().toLocaleString(),
-    tags: ["Networking", "Alumni", "Music"]
-  },
-];
+const samplePosts = [];
 
-// Post Component to display individual posts
+const getRandomColor = (index) => {
+  const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
+  return colors[index % colors.length];
+};
+
+const fetchTagsForContent = async (content) => {
+  const baseUrl = "http://127.0.0.1:5000";
+  try {
+    const response = await fetch(`${baseUrl}/getAI`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    });
+    const data = await response.json();
+    if (data.code === "SUCCESS") {
+      return data.message;
+    }
+    return ["General"];
+  } catch (error) {
+    console.error("Failed to fetch tags:", error);
+    return ["General"];
+  }
+};
+
 const Post = ({ post }) => {
   return (
     <Card className="border rounded-lg p-4 mb-2 shadow-md max-w-md mx-auto">
@@ -60,8 +62,7 @@ const Post = ({ post }) => {
       </div>
       <p className="text-gray-700 text-sm mb-2">{post.content}</p>
       <small className="text-gray-400 text-xs">{post.createdAt}</small>
-      
-      {/* Tags Section */}
+
       <div className="flex flex-wrap gap-2 mt-3">
         {post.tags.map((tag, index) => (
           <span
@@ -69,7 +70,7 @@ const Post = ({ post }) => {
             className="text-xs font-semibold py-1 px-3 rounded-full"
             style={{
               backgroundColor: getRandomColor(index),
-              color: "white"
+              color: "white",
             }}
           >
             {tag}
@@ -80,18 +81,11 @@ const Post = ({ post }) => {
   );
 };
 
-// Utility function to get random colors for tags
-const getRandomColor = (index) => {
-  const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
-  return colors[index % colors.length];
-};
-
-// PostList Component to display all posts
 const PostList = ({ posts }) => {
   return (
     <div>
       {posts.length === 0 ? (
-        <p>No posts available.</p>
+        <></>
       ) : (
         posts.map((post, index) => <Post key={index} post={post} />)
       )}
@@ -101,11 +95,19 @@ const PostList = ({ posts }) => {
 
 const EventsWidget = ({ events }) => {
   return (
-    <div className="p-10 max-w-xs border rounded-xl shadow-md bg-gray-100" style={{ maxHeight: "580px",marginTop: "90px"}} >
-      <h3 className="text-lg font-semibold mb-4 text-center">Hottest Events This Week</h3>
+    <div
+      className="p-10 max-w-xs border rounded-xl shadow-md bg-gray-100"
+      style={{ maxHeight: "580px", marginTop: "90px" }}
+    >
+      <h3 className="text-lg font-semibold mb-4 text-center">
+        Hottest Events This Week
+      </h3>
       <ul className="space-y-3">
         {events.map((event, index) => (
-          <li key={index} className="flex flex-col p-3 bg-white rounded-lg shadow-sm">
+          <li
+            key={index}
+            className="flex flex-col p-3 bg-white rounded-lg shadow-sm"
+          >
             <h4 className="text-md font-bold">{event.title}</h4>
             <p className="text-sm text-gray-500">{event.date}</p>
             <p className="text-sm text-gray-400">{event.location}</p>
@@ -116,14 +118,14 @@ const EventsWidget = ({ events }) => {
   );
 };
 
-// PostForm Component to create new posts
+// PostForm Component
 const PostForm = ({ onPostCreate }) => {
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (content.trim()) {
-      onPostCreate(content);
+      await onPostCreate(content);
       setContent("");
     }
   };
@@ -132,7 +134,7 @@ const PostForm = ({ onPostCreate }) => {
     <div className="mb-4 p-3 max-w-md mx-auto border rounded-xl shadow-md bg-white text-black">
       <form onSubmit={handleSubmit} className="flex items-center space-x-3">
         <Avatar className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
-          <span className="font-bold text-white">A</span> {/* Placeholder avatar */}
+          <span className="font-bold text-white">A</span>
         </Avatar>
         <input
           type="text"
@@ -145,65 +147,59 @@ const PostForm = ({ onPostCreate }) => {
       <div className="flex items-center justify-between mt-3 px-2">
         <button
           type="button"
-          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+          className="text-black hover:text-blue-500 cursor-pointer"
         >
-          <span className="text-blue-400">📷</span>
-          <span className="text-sm">Media</span>
+          📷 Media
         </button>
         <button
           type="button"
-          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+          className="text-black hover:text-blue-500 cursor-pointer"
         >
-          <span className="text-yellow-400">📅</span>
-          <span className="text-sm">Event</span>
+          📅 Event
         </button>
         <button
           type="button"
-          className="flex items-center space-x-1 text-black hover:text-blue-500 cursor-pointer"
+          className="text-black hover:text-blue-500 cursor-pointer"
         >
-          <span className="text-red-400">📝</span>
-          <span className="text-sm">Write article</span>
+          📝 Write article
         </button>
       </div>
     </div>
   );
 };
 
-// Main Newsfeed Component
-// Main Newsfeed Component
 const Newsfeed = () => {
   const [posts, setPosts] = useState(samplePosts);
 
-  const handlePostCreate = (content) => {
+  const handlePostCreate = async (content) => {
+    const tags = await fetchTagsForContent(content);
     const newPost = {
       author: "Artist Name",
       content,
       createdAt: new Date().toLocaleString(),
-      tags: ["New Post", "Community"], // Default tags for new posts
+      tags,
     };
     setPosts([newPost, ...posts]);
   };
 
-  // User profile data
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
       <div className="max-w-6xl mx-auto p-4 flex flex-col space-y-6">
-        
         <div className="flex-grow bg-white rounded-lg shadow-md p-6 flex flex-col">
-        <Navbar />
+          <Navbar />
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Artist Newsfeed</h1>
-            <p className="text-gray-600 mt-2">See what artists have been up to!</p>
+            <h1 className="text-3xl font-bold text-gray-800">
+              Artist Newsfeed
+            </h1>
+            <p className="text-gray-600 mt-2">
+              See what artists have been up to!
+            </p>
           </div>
-  
           <div className="flex flex-grow space-x-6">
             <div className="flex-grow">
               <PostForm onPostCreate={handlePostCreate} />
-              
               <PostList posts={posts} />
             </div>
-  
             <div className="bg-white rounded-lg shadow-md p-6 w-1/3">
               <EventsWidget events={hottestEvents} />
             </div>
@@ -212,16 +208,10 @@ const Newsfeed = () => {
       </div>
     </div>
   );
-  
-  
-  
 };
 
-
-// Export the Newsfeed component as the default export
 const Page = () => {
   return <Newsfeed />;
 };
 
 export default Page;
-
