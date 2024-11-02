@@ -56,7 +56,7 @@ export default function Events() {
         </div>
 
         {/* Inline Search Bar */}
-        <div className="my-4 w-full flex justify-center">
+        <div className="my-4 w-full flex">
           <Input
             type="text"
             placeholder="Search events..."

@@ -1,7 +1,4 @@
 "use client";
-
-import Image from 'next/image'; // Import the Image component
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,21 +14,9 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <NavigationMenu className="mb-16">
+    <NavigationMenu>
       <NavigationMenuList className="flex space-x-4">
         {" "}
-        <NavigationMenuItem>
-          <Link href="/home">
-            <Image
-              src="/assets/logo.png" // Path to your logo
-              alt="Logo" // Alternative text for the image
-              width={100} 
-              height={100} 
-              className="h-12 w-12" 
-            />
-          </Link>
-        </NavigationMenuItem>
-
         <NavigationMenuItem>
           <Link href="/home" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

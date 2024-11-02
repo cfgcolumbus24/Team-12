@@ -1,15 +1,12 @@
-// app/events/page.js
 "use client";
-
 import ForumButton from "@/components/ForumButton";
 import EventsCard from "@/components/EventsCard";
 import Navbar from "@/components/ui/Navbar";
+import SearchBar from "@/components/searchBar";
 import { useState } from "react";
-import { Input } from "@/components/ui/input"; // Assuming Input is from Shadcn UI for consistent styling
 
 export default function Events() {
   const [searchTerm, setSearchTerm] = useState("");
-
   const events = [
     {
       title: "Music Festival",
@@ -38,9 +35,8 @@ export default function Events() {
     },
   ];
 
-  // Filter events by title based on search term
   const filteredEvents = events.filter((event) =>
-    event.title.toLowerCase().includes(searchTerm.toLowerCase())
+    event.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -55,41 +51,24 @@ export default function Events() {
           </p>
         </div>
 
-        {/* Inline Search Bar */}
-        <div className="my-4 w-full flex justify-center">
-          <Input
-            type="text"
-            placeholder="Search events..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border-gray-300 rounded-lg px-4 py-2 w-1/4"
-          />
-        </div>
-
-        {/* Event List */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map((event, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transform transition duration-300 hover:-translate-y-1 border-t-4 border-blue-400"
-              >
-                <EventsCard
-                  title={event.title}
-                  description={event.description}
-                  date={event.date}
-                />
-              </div>
-            ))
-          ) : (
-            <p className="col-span-full text-center text-gray-500">
-              No events found.
-            </p>
-          )}
+          {filteredEvents.map((event, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transform transition duration-300 hover:-translate-y-1 border-t-4 border-blue-400"
+            >
+              <EventsCard
+                title={event.title}
+                description={event.description}
+                date={event.date}
+                value={searchTerm}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Floating Forum Button */}
+      {/* Floating Button */}
       <div className="fixed bottom-8 right-8">
         <ForumButton />
       </div>
