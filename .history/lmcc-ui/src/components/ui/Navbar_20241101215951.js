@@ -25,23 +25,23 @@ export default function Navbar() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/events" passHref>
+          <Link href="/form" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Events
+              Events Form
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/alumniRequests" passHref>
+          <Link href="/discussion" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Alumni Job Board
+              Discussion
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/newsFeed" passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Posts
+              Post NewsFeed
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

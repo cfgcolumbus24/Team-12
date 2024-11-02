@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1730502093105,
@@ -12,6 +12,18 @@
                 {
                     "date": 1730502104937,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,14 @@\n \"use client\";\n-\n import {\n   NavigationMenu,\n+  NavigationMenuContent,\n+  NavigationMenuIndicator,\n   NavigationMenuItem,\n   NavigationMenuLink,\n   NavigationMenuList,\n+  NavigationMenuTrigger,\n+  NavigationMenuViewport,\n } from \"@/components/ui/navigation-menu\";\n import { navigationMenuTriggerStyle } from \"@/components/ui/navigation-menu\";\n import Link from \"next/link\";\n \n"
+                },
+                {
+                    "date": 1730512477792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,15 @@\n               Discussion\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n+        <NavigationMenuItem>\n+          <Link href=\"/newsFeed\" passHref>\n+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n+              Posts\n+            </NavigationMenuLink>\n+          </Link>\n+        </NavigationMenuItem>\n       </NavigationMenuList>\n     </NavigationMenu>\n   );\n }\n"
+                },
+                {
+                    "date": 1730512791305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Posts\n+              Post NewsFeed\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n       </NavigationMenuList>\n"
+                },
+                {
+                    "date": 1730512797458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Post NewsFeed\n+              Posts\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n       </NavigationMenuList>\n"
                 }
             ],
             "date": 1730502093105,
