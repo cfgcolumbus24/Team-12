@@ -2,57 +2,57 @@
 
 import React, { useState } from 'react';
 
-const EventRequestForm = () => {
-  const [formData, setFormData] = useState({
-    eventName: '',
-    description: '',
-    date: '',
-    location: '',
-    staffNeeded: '',
+const RequestForm = () => {
+  const [formValues, setFormValues] = useState({
+    name: '',
+    details: '',
+    eventDate: '',
+    venue: '',
+    staffRequirements: '',
   });
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormValues({
+      ...formValues,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., send data to a server
-    console.log(formData);
+    console.log(formValues);
   };
 
   return (
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-xl font-bold mb-4">Alumni Job Request Form</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleFormSubmit} className="space-y-4">
         <div>
-          <label htmlFor="eventName" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Event Name
           </label>
           <input
             type="text"
-            name="eventName"
-            id="eventName"
-            value={formData.eventName}
-            onChange={handleChange}
+            name="name"
+            id="name"
+            value={formValues.name}
+            onChange={handleInputChange}
             required
             className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="details" className="block text-sm font-medium text-gray-700">
             Description
           </label>
           <textarea
-            name="description"
-            id="description"
-            value={formData.description}
-            onChange={handleChange}
+            name="details"
+            id="details"
+            value={formValues.details}
+            onChange={handleInputChange}
             required
             className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
             rows="4"
@@ -60,44 +60,44 @@ const EventRequestForm = () => {
         </div>
 
         <div>
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700">
             Date
           </label>
           <input
             type="date"
-            name="date"
-            id="date"
-            value={formData.date}
-            onChange={handleChange}
+            name="eventDate"
+            id="eventDate"
+            value={formValues.eventDate}
+            onChange={handleInputChange}
             required
             className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="venue" className="block text-sm font-medium text-gray-700">
             Location
           </label>
           <input
             type="text"
-            name="location"
-            id="location"
-            value={formData.location}
-            onChange={handleChange}
+            name="venue"
+            id="venue"
+            value={formValues.venue}
+            onChange={handleInputChange}
             required
             className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="staffNeeded" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="staffRequirements" className="block text-sm font-medium text-gray-700">
             Staff Needed
           </label>
           <textarea
-            name="staffNeeded"
-            id="staffNeeded"
-            value={formData.staffNeeded}
-            onChange={handleChange}
+            name="staffRequirements"
+            id="staffRequirements"
+            value={formValues.staffRequirements}
+            onChange={handleInputChange}
             className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
             rows="3"
           />
@@ -114,4 +114,4 @@ const EventRequestForm = () => {
   );
 };
 
-export default EventRequestForm;
+export default RequestForm;

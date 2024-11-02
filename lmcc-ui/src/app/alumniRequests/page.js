@@ -6,58 +6,58 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from 'next/link'; // Import Link from next/link
 
-export default function JobPositions() {
-  const [searchTerm, setSearchTerm] = useState("");
+export default function JobOpenings() {
+  const [query, setQuery] = useState("");
 
   // Sample data for upcoming events (replace with real data)
-  const eventsData = [
+  const eventsList = [
     {
       id: 1,
-      name: "Networking Dinner",
+      title: "Networking Dinner",
       date: "November 15, 2024",
-      rolesNeeded: "Event Coordinator, Volunteers",
-      picture: "/assets/event1.jpeg",
+      positionsNeeded: "Event Coordinator, Volunteers",
+      image: "/assets/event1.jpeg",
     },
     {
       id: 2,
-      name: "Career Fair",
+      title: "Career Fair",
       date: "December 1, 2024",
-      rolesNeeded: "Booth Representatives, Organizers",
-      picture: "/assets/event2.jpeg",
+      positionsNeeded: "Booth Representatives, Organizers",
+      image: "/assets/event2.jpeg",
     },
     {
       id: 3,
-      name: "Alumni Panel Discussion",
+      title: "Alumni Panel Discussion",
       date: "January 10, 2025",
-      rolesNeeded: "Moderators, Panelists",
-      picture: "/assets/event3.jpeg",
+      positionsNeeded: "Moderators, Panelists",
+      image: "/assets/event3.jpeg",
     },
     {
       id: 4,
-      name: "Annual Alumni Reunion",
+      title: "Annual Alumni Reunion",
       date: "February 20, 2025",
-      rolesNeeded: "Planning Committee, Event Staff",
-      picture: "/assets/event4.jpeg",
+      positionsNeeded: "Planning Committee, Event Staff",
+      image: "/assets/event4.jpeg",
     },
     {
       id: 5,
-      name: "Workshop on Career Development",
+      title: "Workshop on Career Development",
       date: "March 5, 2025",
-      rolesNeeded: "Facilitators, Helpers",
-      picture: "/assets/event5.jpeg",
+      positionsNeeded: "Facilitators, Helpers",
+      image: "/assets/event5.jpeg",
     },
     {
       id: 6,
-      name: "Mentorship Program Kickoff",
+      title: "Mentorship Program Kickoff",
       date: "April 12, 2025",
-      rolesNeeded: "Mentors, Mentees",
-      picture: "/assets/event6.jpeg",
+      positionsNeeded: "Mentors, Mentees",
+      image: "/assets/event6.jpeg",
     },
   ];
 
   // Filter events based on the search term
-  const filteredEvents = eventsData.filter((event) =>
-    event.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const searchedEvents = eventsList.filter((event) =>
+    event.title.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -78,20 +78,20 @@ export default function JobPositions() {
             type="text"
             placeholder="Search events..."
             className="w-full max-w-md"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
         </div>
 
         {/* Events Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filteredEvents.map((event) => (
+          {searchedEvents.map((event) => (
             <Card key={event.id} className="shadow-md">
               <CardHeader className="flex justify-center pt-4">
                 <div className="relative w-24 h-24">
                   <Image
-                    src={event.picture}
-                    alt={`${event.name} event`}
+                    src={event.image}
+                    alt={`${event.title} event`}
                     fill
                     className="rounded-md object-cover"
                   />
@@ -99,10 +99,10 @@ export default function JobPositions() {
               </CardHeader>
               <CardContent>
                 <CardTitle className="text-center text-lg font-semibold">
-                  {event.name}
+                  {event.title}
                 </CardTitle>
                 <p className="text-center text-gray-700">{event.date}</p>
-                <p className="text-center text-gray-500">{event.rolesNeeded}</p>
+                <p className="text-center text-gray-500">{event.positionsNeeded}</p>
               </CardContent>
             </Card>
           ))}
@@ -111,3 +111,4 @@ export default function JobPositions() {
     </div>
   );
 }
+
