@@ -3,13 +3,11 @@
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/ui/Navbar";
 import ProfileUnit from "../profileunit";
-
 import { useState } from "react";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Sample data for alumni
   const alumniData = [
     {
       id: 1,
@@ -44,44 +42,26 @@ export default function AlumniPanel() {
       instagram: "https://www.instagram.com/lmcc_nyc",
       portfolio: "https://www.journoportfolio.com/examples/artists/",
     },
-    {
-      id: 4,
-      name: "Anurag Davinci",
-      picture: "https://github.com/shadcn.png",
-      bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
-    },
-    {
-      id: 5,
-      name: "Anurag Davinci",
-      picture: "https://github.com/shadcn.png",
-      bio: "Hello!",
-      topics: { first: "guitar", second: "painting" },
-      contact: "+1 638 929 1921",
-      twitter: "https://x.com/LMCC",
-      instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
-    },
-    // Add more fake data entries if needed
+
   ];
 
-  // Filter alumni based on the search term
+ 
   const filteredAlumni = alumniData.filter((alumnus) =>
     alumnus.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
 
-        <h1 className="text-4xl font-bold text-center mb-8">Artist Match</h1>
+        {}
+        <div className="my-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-800">Artist Match</h1>
+          <p className="text-gray-600 mt-2">Find and connect with artists!</p>
+        </div>
 
-        {/* Search Input */}
+        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
@@ -92,8 +72,8 @@ export default function AlumniPanel() {
           />
         </div>
 
-        {/* Alumni Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {filteredAlumni.map((alumnus) => (
             <ProfileUnit
               key={alumnus.id}
