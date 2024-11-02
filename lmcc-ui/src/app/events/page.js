@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"; // Assuming Input is from Shadcn 
 
 export default function Events() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const events = [
     {
@@ -94,10 +95,28 @@ export default function Events() {
         </div>
       </div>
 
-      {/* Floating Forum Button */}
-      <div className="fixed bottom-8 right-8">
-        <ForumButton />
+     {/* Floating Box Button */}
+<button
+  onClick={() => setIsOpen(true)}
+  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+>
+  Request an Event
+</button>
+
+    {isOpen && (
+      <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
+          >
+            ✕
+          </button>
+          <ForumButton />
+        </div>
       </div>
+)}
+
     </div>
   );
 }
