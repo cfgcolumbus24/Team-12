@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
 import Link from 'next/link'; // Import Link from next/link
+import Navbar from "@/components/ui/Navbar";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
@@ -61,8 +62,10 @@ export default function JobOpenings() {
   );
 
   return (
+  
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
+      <Navbar />
         <h1 className="text-4xl font-bold text-center mb-8"> Alumni Job Positions </h1>
 
         {/* "+" Button to open Event Request Form */}
