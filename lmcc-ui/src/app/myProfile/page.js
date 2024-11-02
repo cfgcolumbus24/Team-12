@@ -13,16 +13,19 @@ const samplePosts = [
     author: "Artist Profile",
     content: "Excited to share my latest artwork! Check it out in my gallery.",
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toLocaleString(), // 2 hours ago
+    tags: ["Mural", "Downtown", "Art"]
   },
   {
     author: "Artist Profile",
     content: "This is a recent painting I completed for an exhibition!",
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toLocaleString(), // 1 day ago
+    tags: ["Mural", "Downtown", "Art"]
   },
   {
     author: "Artist Profile",
     content: "Experimenting with new techniques in my latest project!",
     createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48).toLocaleString(), // 2 days ago
+    tags: ["Mural", "Downtown", "Art"]
   },
 ];
 
@@ -32,19 +35,42 @@ const sortedPosts = samplePosts.sort(
 );
 
 // Post Component to display individual posts
-const Post = ({ post }) => {
+const Post = ({ post, avatarUrl }) => {
   return (
-    <Card className="border rounded p-4 mb-2 shadow">
-      <div className="flex items-center mb-2">
-        <Avatar className="mr-2">
-          <span className="font-bold">{post.author.charAt(0)}</span>
-        </Avatar>
-        <h4 className="font-bold">{post.author}</h4>
-      </div>
-      <p>{post.content}</p>
-      <small className="text-gray-500">{post.createdAt}</small>
+    <Card className="border rounded-lg p-4 mb-2 shadow-md max-w-md mx-auto">
+    <div className="flex items-center mb-2">
+      <Avatar className="mr-2 rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center">
+        <AvatarImage src={avatarUrl} alt={`${post.author}'s avatar`} />
+        <AvatarFallback>{post.author.charAt(0)}</AvatarFallback>
+      </Avatar>
+      <h4 className="font-semibold text-md">{post.author}</h4>
+    </div>
+    <p className="text-gray-700 text-sm mb-2">{post.content}</p>
+    <small className="text-gray-400 text-xs">{post.createdAt}</small>
+    
+    {/* Tags Section */}
+    <div className="flex flex-wrap gap-2 mt-3">
+      {post.tags.map((tag, index) => (
+        <span
+          key={index}
+          className="text-xs font-semibold py-1 px-3 rounded-full"
+          style={{
+            backgroundColor: getRandomColor(index),
+            color: "white"
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
     </Card>
   );
+};
+
+// Utility function to get random colors for tags
+const getRandomColor = (index) => {
+  const colors = ["#ff7f50", "#6495ed", "#ff69b4", "#ffa500", "#6a5acd"];
+  return colors[index % colors.length];
 };
 
 // Profile Component to display profile picture and bio
@@ -66,16 +92,21 @@ const ProfileHeader = () => {
 
 // PostList Component to display all posts
 const PostList = ({ posts }) => {
+
+  const avatarUrl = "/assets/stock1.jpeg";
+
   return (
     <div>
       {posts.length === 0 ? (
         <p>No posts available.</p>
       ) : (
-        posts.map((post, index) => <Post key={index} post={post} />)
+        posts.map((post, index) => <Post key={index} post={post} avatarUrl={avatarUrl} />)
       )}
     </div>
   );
 };
+
+
 
 // Main MyProfile Component
 const MyProfile = () => {
