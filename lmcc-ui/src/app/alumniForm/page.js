@@ -22,13 +22,13 @@ const RequestForm = ({ onSubmit }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     onSubmit({
-      title: formValues.name, // Use the correct key for the title
-      description: formValues.details, // Add this for description
+      title: formValues.name, 
+      description: formValues.details, 
       date: formValues.eventDate,
       location: formValues.venue,
-      positionsNeeded: formValues.staffRequirements, // Ensure this is consistent
-    }); // Call the onSubmit prop with the new event data
-    setFormValues({ // Clear the form after submission
+      positionsNeeded: formValues.staffRequirements, 
+    }); 
+    setFormValues({ 
       name: "",
       details: "",
       eventDate: "",
