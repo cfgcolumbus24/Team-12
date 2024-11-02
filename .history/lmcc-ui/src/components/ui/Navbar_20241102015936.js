@@ -67,7 +67,7 @@ export default function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuTrigger className="h-10 w-10 p-0">
               <Image
-                src="/assets/stock1.jpeg"
+                src="/assets/profile.jpg"
                 alt="User Profile"
                 width={40}
                 height={40}
@@ -78,14 +78,21 @@ export default function Navbar() {
               <NavigationMenuList className="flex flex-col items-start p-2 bg-white rounded shadow-lg space-y-2">
                 <NavigationMenuItem>
                   <Link href="/myProfile" passHref>
-                    <NavigationMenuLink className="text-sm hover:text-blue-300">
-                      My Profile
+                    <NavigationMenuLink className="text-sm hover:text-blue-600">
+                      View Profile
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/settings" passHref>
+                    <NavigationMenuLink className="text-sm hover:text-blue-600">
+                      Settings
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/logout" passHref>
-                    <NavigationMenuLink className="text-sm hover:text-red-300">
+                    <NavigationMenuLink className="text-sm hover:text-red-600">
                       Logout
                     </NavigationMenuLink>
                   </Link>
