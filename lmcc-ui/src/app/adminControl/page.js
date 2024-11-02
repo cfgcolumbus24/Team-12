@@ -24,13 +24,33 @@ export default function AdminDashboard() {
 
   // Event-related states with dummy data
   const [events, setEvents] = useState([
-    { id: 1, name: "Community Meetup", date: "2024-11-10", description: "A gathering for community members." },
-    { id: 2, name: "Tech Workshop", date: "2024-12-05", description: "A workshop on emerging tech trends." },
+    {
+      id: 1,
+      name: "Community Meetup",
+      date: "2024-11-10",
+      description: "A gathering for community members.",
+    },
+    {
+      id: 2,
+      name: "Tech Workshop",
+      date: "2024-12-05",
+      description: "A workshop on emerging tech trends.",
+    },
   ]);
 
   const [submittedEvents, setSubmittedEvents] = useState([
-    { id: 3, name: "Annual Gala", date: "2024-12-20", description: "A formal event with awards and entertainment." },
-    { id: 4, name: "Fundraiser", date: "2025-01-15", description: "An event to raise funds for local charities." },
+    {
+      id: 3,
+      name: "Annual Gala",
+      date: "2024-12-20",
+      description: "A formal event with awards and entertainment.",
+    },
+    {
+      id: 4,
+      name: "Fundraiser",
+      date: "2025-01-15",
+      description: "An event to raise funds for local charities.",
+    },
   ]);
 
   const [showForm, setShowForm] = useState(null);
@@ -52,7 +72,9 @@ export default function AdminDashboard() {
   });
 
   const handleRoleChange = (id, newRole) => {
-    setUsers(users.map(user => user.id === id ? { ...user, role: newRole } : user));
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, role: newRole } : user))
+    );
   };
 
   const handleAddEvent = (event) => {
@@ -103,7 +125,7 @@ export default function AdminDashboard() {
             Delete Event
           </button>
         </div>
-  
+
         {/* Conditionally Render Forms */}
         {showForm === "add" && (
           <form onSubmit={handleAddEvent} className="space-y-4">
@@ -127,12 +149,15 @@ export default function AdminDashboard() {
               className="border px-2 py-1 w-full"
               required
             ></textarea>
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+            >
               Submit Event
             </button>
           </form>
         )}
-  
+
         {showForm === "approve" && (
           <div>
             <h2 className="text-lg font-semibold mb-4">Approve Events</h2>
@@ -141,7 +166,10 @@ export default function AdminDashboard() {
             ) : (
               <div className="space-y-2">
                 {submittedEvents.map((event) => (
-                  <div key={event.id} className="flex justify-between items-center p-2 border-b">
+                  <div
+                    key={event.id}
+                    className="flex justify-between items-center p-2 border-b"
+                  >
                     <div>
                       <h3 className="text-md font-medium">{event.name}</h3>
                       <p>{event.date}</p>
@@ -167,7 +195,7 @@ export default function AdminDashboard() {
             )}
           </div>
         )}
-  
+
         {showForm === "delete" && (
           <div>
             <h2 className="text-lg font-semibold mb-4">Delete Events</h2>
@@ -176,7 +204,10 @@ export default function AdminDashboard() {
             ) : (
               <div className="space-y-2">
                 {events.map((event) => (
-                  <div key={event.id} className="flex justify-between items-center p-2 border-b">
+                  <div
+                    key={event.id}
+                    className="flex justify-between items-center p-2 border-b"
+                  >
                     <div>
                       <h3 className="text-md font-medium">{event.name}</h3>
                       <p>{event.date}</p>
@@ -197,7 +228,6 @@ export default function AdminDashboard() {
       </div>
     );
   };
-  
 
   const renderModuleContent = () => {
     const handleSaveChanges = () => {
@@ -205,31 +235,54 @@ export default function AdminDashboard() {
       console.log("Changes saved:", users);
       alert("Changes saved successfully!");
     };
-  
+
     switch (selectedModule) {
       case "Users":
         return (
           <div>
             <h2 className="text-xl font-semibold mb-4">User Management</h2>
-            <div className="overflow-y-auto border border-gray-300 rounded-lg" style={{ maxHeight: "calc(5 * 2.5rem)" }}>
+            <div
+              className="overflow-y-auto border border-gray-300 rounded-lg"
+              style={{ maxHeight: "calc(5 * 2.5rem)" }}
+            >
               <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
                 <thead className="sticky top-0 bg-gray-100">
                   <tr className="text-left">
-                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("name")}>Name</th>
-                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("createdAt")}>Created At</th>
-                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("role")}>Role</th>
+                    <th
+                      className="px-4 py-2 cursor-pointer"
+                      onClick={() => handleSortChange("name")}
+                    >
+                      Name
+                    </th>
+                    <th
+                      className="px-4 py-2 cursor-pointer"
+                      onClick={() => handleSortChange("createdAt")}
+                    >
+                      Created At
+                    </th>
+                    <th
+                      className="px-4 py-2 cursor-pointer"
+                      onClick={() => handleSortChange("role")}
+                    >
+                      Role
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedUsers.map((user) => (
-                    <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-50">
+                    <tr
+                      key={user.id}
+                      className="border-b border-gray-200 hover:bg-gray-50"
+                    >
                       <td className="px-4 py-2">{user.name}</td>
                       <td className="px-4 py-2">{user.createdAt}</td>
                       <td className="px-4 py-2">
                         <select
                           className="border rounded px-2 py-1 bg-white"
                           value={user.role}
-                          onChange={(e) => handleRoleChange(user.id, e.target.value)}
+                          onChange={(e) =>
+                            handleRoleChange(user.id, e.target.value)
+                          }
                         >
                           <option value="Admin">Admin</option>
                           <option value="Alumni">Alumni</option>
@@ -259,30 +312,31 @@ export default function AdminDashboard() {
         return <div>Select a module from the sidebar</div>;
     }
   };
-  
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6 flex">
       <div className="w-1/5 bg-white shadow-lg rounded-lg p-4">
         {/* Sidebar */}
         <ul className="space-y-4">
           <li
-            className={`cursor-pointer ${selectedModule === "Users" ? "text-blue-500 font-bold" : "text-gray-700"}`}
+            className={`cursor-pointer ${
+              selectedModule === "Users"
+                ? "text-blue-500 font-bold"
+                : "text-gray-700"
+            }`}
             onClick={() => setSelectedModule("Users")}
           >
             Users
           </li>
           <li
-            className={`cursor-pointer ${selectedModule === "Events" ? "text-blue-500 font-bold" : "text-gray-700"}`}
+            className={`cursor-pointer ${
+              selectedModule === "Events"
+                ? "text-blue-500 font-bold"
+                : "text-gray-700"
+            }`}
             onClick={() => setSelectedModule("Events")}
           >
             Events
-          </li>
-          <li
-            className={`cursor-pointer ${selectedModule === "Job Posting" ? "text-blue-500 font-bold" : "text-gray-700"}`}
-            onClick={() => setSelectedModule("Job Posting")}
-          >
-            Job Postings
           </li>
         </ul>
       </div>
@@ -290,7 +344,9 @@ export default function AdminDashboard() {
         <Navbar />
         <div className="my-8 text-center">
           <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
-          <p className="text-gray-600 mt-2">Manage events and view analytics!</p>
+          <p className="text-gray-600 mt-2">
+            Manage events and view analytics!
+          </p>
         </div>
 
         {renderModuleContent()}

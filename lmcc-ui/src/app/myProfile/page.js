@@ -9,38 +9,6 @@ import Navbar from "@/components/ui/Navbar";
 import { useCurrentUser } from "../firebase/firebase";
 
 // Sample posts to display when the app is loaded
-const samplePosts = [
-  {
-    author: "Maria Doe",
-    content: "Excited to share my latest artwork! Check it out in my gallery.",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toLocaleString(), // 2 hours ago
-    tags: ["Mural", "Downtown", "Art"],
-  },
-  {
-    author: "Maria Doe",
-    content: "This is a recent painting I completed for an exhibition!",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toLocaleString(), // 1 day ago
-    tags: ["Exhibition", "Painting", "New"],
-  },
-  {
-    author: "Maria Doe",
-    content: "Experimenting with new techniques in my latest project!",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48).toLocaleString(), // 2 days ago
-    tags: ["Experiment", "Techniques", "Project"],
-  },
-];
-
-// Sample gallery items
-const sampleGallery = [
-  { id: 1, imageUrl: "/assets/carStock.jpg", title: "Urban Mural" },
-  { id: 2, imageUrl: "/assets/bearArtPic.jpg", title: "Abstract Painting" },
-  { id: 3, imageUrl: "/assets/coolArtPic.jpeg", title: "Street Art" },
-];
-
-// Sort posts from most recent to least recent
-const sortedPosts = samplePosts.sort(
-  (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-);
 
 // Post Component to display individual posts
 const Post = ({ post, avatarUrl }) => {
@@ -123,7 +91,9 @@ const ProfileHeader = () => {
           </AvatarFallback>
         </Avatar>
       </div>
-      <h2 className="text-3xl font-extrabold text-gray-800 mb-2">Maria Doe</h2>
+      <h2 className="text-3xl font-extrabold text-gray-800 mb-2">
+        {loading ? "Loading..." : currentUser.displayName}
+      </h2>
       <p className="text-gray-700 text-center max-w-xs leading-relaxed">
         Passionate artist exploring modern art forms and pushing creative
         boundaries.
@@ -134,7 +104,8 @@ const ProfileHeader = () => {
 
 // PostList Component to display all posts
 const PostList = ({ posts }) => {
-  const avatarUrl = "/assets/stock1.jpeg";
+  const { currentUser, loading } = useCurrentUser();
+  const avatarUrl = loading ? null : currentUser.photoURL;
   return (
     <div>
       {posts.length === 0 ? (
@@ -150,6 +121,42 @@ const PostList = ({ posts }) => {
 
 // Main MyProfile Component
 const MyProfile = () => {
+  const { currentUser, loading } = useCurrentUser();
+  const name = currentUser ? currentUser.displayName : "Loading...";
+
+  const samplePosts = [
+    {
+      author: name,
+      content:
+        "Excited to share my latest artwork! Check it out in my gallery.",
+      createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toLocaleString(), // 2 hours ago
+      tags: ["Mural", "Downtown", "Art"],
+    },
+    {
+      author: name,
+      content: "This is a recent painting I completed for an exhibition!",
+      createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toLocaleString(), // 1 day ago
+      tags: ["Exhibition", "Painting", "New"],
+    },
+    {
+      author: name,
+      content: "Experimenting with new techniques in my latest project!",
+      createdAt: new Date(Date.now() - 1000 * 60 * 60 * 48).toLocaleString(), // 2 days ago
+      tags: ["Experiment", "Techniques", "Project"],
+    },
+  ];
+
+  // Sample gallery items
+  const sampleGallery = [
+    { id: 1, imageUrl: "/assets/carStock.jpg", title: "Urban Mural" },
+    { id: 2, imageUrl: "/assets/bearArtPic.jpg", title: "Abstract Painting" },
+    { id: 3, imageUrl: "/assets/coolArtPic.jpeg", title: "Street Art" },
+  ];
+
+  // Sort posts from most recent to least recent
+  const sortedPosts = samplePosts.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-16 px-8">
       <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-lg p-8">
