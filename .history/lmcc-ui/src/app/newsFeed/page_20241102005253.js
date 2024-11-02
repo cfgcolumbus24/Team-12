@@ -35,8 +35,8 @@ const Post = ({ post }) => {
     <Card className="border rounded p-4 mb-2 shadow">
       <div className="flex items-center mb-2">
         <Avatar className="mr-2">
-          <span className="font-bold"></span>
-          <img src="https://github.com/shadcn.png" alt="Profile Picture" />
+          <span className="font-bold">{post.author.charAt(0)}</span>{" "}
+          {/* Just a placeholder for the avatar */}
         </Avatar>
         <h4 className="font-bold">{post.author}</h4>
       </div>
@@ -101,12 +101,15 @@ const Newsfeed = () => {
   };
 
   return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6"></div>
     <div className="max-w-lg mx-auto p-4">
       <Navbar></Navbar>
-      <h2 className="text-2xl font-bold mb-4">News Feed</h2>
+      <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
       <PostForm onPostCreate={handlePostCreate} />
       <PostList posts={posts} />
     </div>
+    </div>
+    
   );
 };
 

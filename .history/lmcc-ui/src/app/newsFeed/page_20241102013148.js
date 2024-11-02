@@ -36,6 +36,7 @@ const Post = ({ post }) => {
       <div className="flex items-center mb-2">
         <Avatar className="mr-2">
           <span className="font-bold"></span>
+          {/* Just a placeholder for the avatar */}
           <img src="https://github.com/shadcn.png" alt="Profile Picture" />
         </Avatar>
         <h4 className="font-bold">{post.author}</h4>
