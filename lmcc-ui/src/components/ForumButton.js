@@ -2,7 +2,7 @@
 import { useState } from "react";
 export default function ForumButton() {
 
-    
+
     const [isOpen, setIsOpen] = useState(false);
     const [formData, setFormData] = useState({
       title: '',
@@ -21,7 +21,7 @@ export default function ForumButton() {
     };
   
     return (
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-left mt-10">
         <button
           onClick={() => setIsOpen(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"

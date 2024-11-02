@@ -1,5 +1,8 @@
 import ForumButton from '@/components/ForumButton';
 import EventsCard from "@/components/EventsCard";
+import Navbar from '@/components/ui/Navbar';
+import SearchBar from '@/components/searchBar';
+import { Search } from 'lucide-react';
 
 export default function Events() {
   const events = [
