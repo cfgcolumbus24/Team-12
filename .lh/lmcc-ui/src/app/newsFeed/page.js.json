@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1730512045835,
@@ -24,6 +24,22 @@
                 {
                     "date": 1730512192529,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,8 +101,9 @@\n   };\n \n   return (\n     <div className=\"max-w-lg mx-auto p-4\">\n+      <Navbar></Navbar>\n       <h2 className=\"text-2xl font-bold mb-4\">Artist Newsfeed</h2>\n       <PostForm onPostCreate={handlePostCreate} />\n       <PostList posts={posts} />\n     </div>\n"
+                },
+                {
+                    "date": 1730512934770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,9 +101,11 @@\n   };\n \n   return (\n     <div className=\"max-w-lg mx-auto p-4\">\n-      <Navbar></Navbar>\n+      <div className=\"max-w-4xl mx-auto\">\n+        <Navbar></Navbar>\n+      </div>\n       <h2 className=\"text-2xl font-bold mb-4\">Artist Newsfeed</h2>\n       <PostForm onPostCreate={handlePostCreate} />\n       <PostList posts={posts} />\n     </div>\n"
+                },
+                {
+                    "date": 1730512965716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,11 +101,9 @@\n   };\n \n   return (\n     <div className=\"max-w-lg mx-auto p-4\">\n-      <div className=\"max-w-4xl mx-auto\">\n-        <Navbar></Navbar>\n-      </div>\n+      <Navbar></Navbar>\n       <h2 className=\"text-2xl font-bold mb-4\">Artist Newsfeed</h2>\n       <PostForm onPostCreate={handlePostCreate} />\n       <PostList posts={posts} />\n     </div>\n"
+                },
+                {
+                    "date": 1730512999710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,11 +100,13 @@\n     setPosts([newPost, ...posts]); // Add new post at the beginning of the list\n   };\n \n   return (\n-    <div className=\"max-w-lg mx-auto p-4\">\n-      <Navbar></Navbar>\n-      <h2 className=\"text-2xl font-bold mb-4\">Artist Newsfeed</h2>\n+    <div className=\"max-w-lg mx-auto p-4 relative\">\n+      <Navbar className=\"absolute top-0 left-0 z-10\" />{\" \"}\n+      {/* Adjusted Navbar position */}\n+      <h2 className=\"text-2xl font-bold mb-4 mt-16\">Artist Newsfeed</h2>{\" \"}\n+      {/* Added margin-top to avoid overlap */}\n       <PostForm onPostCreate={handlePostCreate} />\n       <PostList posts={posts} />\n     </div>\n   );\n"
+                },
+                {
+                    "date": 1730513011768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,13 +100,11 @@\n     setPosts([newPost, ...posts]); // Add new post at the beginning of the list\n   };\n \n   return (\n-    <div className=\"max-w-lg mx-auto p-4 relative\">\n-      <Navbar className=\"absolute top-0 left-0 z-10\" />{\" \"}\n-      {/* Adjusted Navbar position */}\n-      <h2 className=\"text-2xl font-bold mb-4 mt-16\">Artist Newsfeed</h2>{\" \"}\n-      {/* Added margin-top to avoid overlap */}\n+    <div className=\"max-w-lg mx-auto p-4\">\n+      <Navbar></Navbar>\n+      <h2 className=\"text-2xl font-bold mb-4\">Artist Newsfeed</h2>\n       <PostForm onPostCreate={handlePostCreate} />\n       <PostList posts={posts} />\n     </div>\n   );\n"
                 }
             ],
             "date": 1730512045835,

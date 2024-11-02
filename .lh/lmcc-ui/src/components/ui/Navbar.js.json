@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1730502093105,
@@ -24,6 +24,10 @@
                 {
                     "date": 1730512797458,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Post NewsFeed\n+              Posts\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n       </NavigationMenuList>\n"
+                },
+                {
+                    "date": 1730513538552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         </NavigationMenuItem>\n         <NavigationMenuItem>\n           <Link href=\"/newsFeed\" passHref>\n             <NavigationMenuLink className={navigationMenuTriggerStyle()}>\n-              Posts\n+              Post Feed\n             </NavigationMenuLink>\n           </Link>\n         </NavigationMenuItem>\n       </NavigationMenuList>\n"
                 }
             ],
             "date": 1730502093105,
