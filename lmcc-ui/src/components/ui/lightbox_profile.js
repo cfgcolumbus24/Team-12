@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 
-const Lightbox = ({ isOpen, onClose, content, picture, name, location, time }) => {
+const Lightbox = ({ isOpen, onClose, content, name, picture, location, time }) => {
   if (!isOpen) return null;
 
   return (
