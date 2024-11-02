@@ -1,9 +1,9 @@
-export default function Attending({ profileImg }) {
+export default function Attending({ profileImg, attendeeCount }) {
   const profileImages = [profileImg, profileImg, profileImg];
 
   return (
     <div className="flex gap-x-4 ml-10 items-center">
-      <div className="flex w-1/6 relative ml-3">
+      <div className="flex w-1/3 relative ml-3">
         {profileImages.map((img, index) => (
           <ProfileCircle
             key={index}
@@ -12,7 +12,7 @@ export default function Attending({ profileImg }) {
           />
         ))}
       </div>
-      <p>and {28 - profileImages.length} more...</p>
+      <p>and {attendeeCount - profileImages.length} more...</p>
     </div>
   );
 }
