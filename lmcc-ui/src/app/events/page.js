@@ -15,26 +15,34 @@ export default function Events() {
       title: "Music Festival",
       description: "Join us for an amazing music festival!",
       date: "Nov 10, 2024",
+      image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       title: "Art Workshop",
       description: "Learn the basics of painting.",
       date: "Nov 12, 2024",
+      image: "http://janislander.com/wp-content/uploads/2013/10/IMG_0001.jpg"
+
     },
     {
       title: "Tech Conference",
       description: "Explore the latest in tech.",
       date: "Nov 15, 2024",
+       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRETLqARFPDW4FVlpHvMJKZnpe2d5i3Mb8jaw&s"
     },
     {
       title: "Food Expo",
       description: "Taste a variety of cuisines.",
       date: "Nov 20, 2024",
+       image: "https://i.pinimg.com/originals/cc/c5/37/ccc5372e0b0539737d34c00f08d049d2.jpg"
+      
+      
     },
     {
       title: "Charity Run",
       description: "Run for a cause.",
       date: "Nov 25, 2024",
+      image: "https://i.pinimg.com/originals/3d/ab/ea/3dabea7365a810ffa5ca1a549f6f170c.png"
     },
   ];
 
@@ -72,12 +80,13 @@ export default function Events() {
             filteredEvents.map((event, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transform transition duration-300 hover:-translate-y-1 border-t-4 border-blue-400"
+                className="bg-blue-100 p-4 rounded-lg shadow-md hover:shadow-xl transform transition duration-300 hover:-translate-y-1 border-t-4 border-blue-400"
               >
                 <EventsCard
                   title={event.title}
                   description={event.description}
                   date={event.date}
+                  image={event.image}
                 />
               </div>
             ))
