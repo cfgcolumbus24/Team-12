@@ -26,7 +26,7 @@ const RequestForm = () => {
 
 
   return (
-    <div className="max-w-md mx-auto p-4">
+    <div className="max-w-md mx-auto p-4 bg-gray-200"> {/* Grey background */}
       <h2 className="text-xl font-bold mb-4">Alumni Job Request Form</h2>
       <form onSubmit={handleFormSubmit} className="space-y-4">
         <div>
