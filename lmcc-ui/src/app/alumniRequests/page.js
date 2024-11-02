@@ -28,42 +28,42 @@ const handleClose = () => {
       title: "Networking Dinner",
       date: "November 15, 2024",
       positionsNeeded: "Event Coordinator, Volunteers",
-      image: "/assets/event1.jpeg",
+      image: "https://static.thenounproject.com/png/1341136-200.png",
     },
     {
       id: 2,
       title: "Career Fair",
       date: "December 1, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "/assets/event2.jpeg",
+      image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
     },
     {
       id: 3,
       title: "Alumni Panel Discussion",
       date: "January 10, 2025",
       positionsNeeded: "Moderators, Panelists",
-      image: "/assets/event3.jpeg",
+      image: "https://e7.pngegg.com/pngimages/494/134/png-clipart-human-resource-management-business-organization-panel-discussion-text-human-resource-management-thumbnail.png",
     },
     {
       id: 4,
       title: "Annual Alumni Reunion",
       date: "February 20, 2025",
       positionsNeeded: "Planning Committee, Event Staff",
-      image: "/assets/event4.jpeg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF9_AlQkEUzP3N9rl4ph-LmGRpzfc36kCSQA&s",
     },
     {
       id: 5,
       title: "Workshop on Career Development",
       date: "March 5, 2025",
       positionsNeeded: "Facilitators, Helpers",
-      image: "/assets/event5.jpeg",
+      image: "https://cdni.iconscout.com/illustration/premium/thumb/career-development-illustration-download-in-svg-png-gif-file-formats--path-logo-opportunities-promotions-advancement-school-education-illustrations-3575375.png",
     },
     {
       id: 6,
       title: "Mentorship Program Kickoff",
       date: "April 12, 2025",
       positionsNeeded: "Mentors, Mentees",
-      image: "/assets/event6.jpeg",
+      image: "https://irq.sirweb.org/downloads/173/download/f706e348273845b8859e90c08c3ddcda.png?cb=baadf7eed57269eaa9f724fe18b337b1",
     },
   ];
 
@@ -73,7 +73,7 @@ const handleClose = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+    <div className="min-h-screen bg-gray-200 py-12 px-6">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
         <Navbar />
         <div className="my-8 text-center">
@@ -123,10 +123,10 @@ const handleClose = () => {
         {/* Events Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {searchedEvents.map((event) => (
-            <Card key={event.id} className="shadow-md">
+            <Card key={event.id} className="shadow-md bg-blue-100">
               <CardHeader className="flex justify-center pt-4">
-                <div className="relative w-24 h-24">
-                  <Image
+                <div className="flex justify-center">
+                  <img
                     src={event.image}
                     alt={`${event.title} event`}
                     fill
