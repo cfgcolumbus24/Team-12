@@ -6,6 +6,15 @@ import { useState } from "react";
 import Navbar from "@/components/ui/Navbar";
 import AlumniForm from "@/app/alumniForm/page";
 
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+}
+
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +88,7 @@ export default function JobOpenings() {
                 <CardTitle className="text-center text-lg font-semibold">
                   {event.title}
                 </CardTitle>
-                <p className="text-center text-gray-700">{event.date}</p>
+                <p className="text-center text-gray-700">{formatDate(event.date)}</p>
                 <p className="text-center text-gray-500">
                   {event.positionsNeeded}
                 </p>
