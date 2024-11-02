@@ -8,23 +8,12 @@ import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import Navbar from "@/components/ui/Navbar";
 
+
 const hottestEvents = [
-  {
-    title: "Art & Wine Festival",
-    date: "Nov 3, 2024",
-    location: "Downtown Athens",
-  },
+  { title: "Art & Wine Festival", date: "Nov 3, 2024", location: "Downtown Athens" },
   { title: "Live Jazz Night", date: "Nov 4, 2024", location: "Blue Note Cafe" },
-  {
-    title: "Sculpture Exhibition",
-    date: "Nov 5, 2024",
-    location: "City Art Museum",
-  },
-  {
-    title: "Photography Workshop",
-    date: "Nov 6, 2024",
-    location: "Artist's Hub",
-  },
+  { title: "Sculpture Exhibition", date: "Nov 5, 2024", location: "City Art Museum" },
+  { title: "Photography Workshop", date: "Nov 6, 2024", location: "Artist's Hub" },
   { title: "Charity Art Auction", date: "Nov 7, 2024", location: "Grand Hall" },
 ];
 
@@ -34,27 +23,28 @@ const samplePosts = [
     author: "Artist One",
     content: "Excited to share my latest artwork! Check it out in my gallery.",
     createdAt: new Date().toLocaleString(),
-    tags: ["Art", "Gallery"],
+    tags: ["Art", "Gallery"]
   },
   {
     author: "Artist Two",
     content:
       "Just finished a new mural in downtown! Can’t wait for you all to see it!",
     createdAt: new Date().toLocaleString(),
-    tags: ["Mural", "Downtown", "Art"],
+    tags: ["Mural", "Downtown", "Art"]
   },
   {
     author: "Artist Three",
     content:
       "I will be live streaming my painting session this weekend! Join me!",
     createdAt: new Date().toLocaleString(),
-    tags: ["Live Stream", "Painting", "Event"],
+    tags: ["Live Stream", "Painting", "Event"]
   },
   {
     author: "Artist Four",
-    content: "Looking to connect with any Alumni who play guitar!",
+    content:
+      "Looking to connect with any Alumni who play guitar!",
     createdAt: new Date().toLocaleString(),
-    tags: ["Networking", "Alumni", "Music"],
+    tags: ["Networking", "Alumni", "Music"]
   },
 ];
 
@@ -63,15 +53,14 @@ const Post = ({ post }) => {
   return (
     <Card className="border rounded-lg p-4 mb-2 shadow-md max-w-md mx-auto">
       <div className="flex items-center mb-2">
-        <Avatar className="mr-2">
-          <span className="font-bold">{post.author.charAt(0)}</span>{" "}
-          {/* Just a placeholder for the avatar */}
+        <Avatar className="mr-2 rounded-full bg-blue-500 text-white w-8 h-8 flex items-center justify-center">
+          <span className="font-semibold text-sm">{post.author.charAt(0)}</span>
         </Avatar>
         <h4 className="font-semibold text-md">{post.author}</h4>
       </div>
       <p className="text-gray-700 text-sm mb-2">{post.content}</p>
       <small className="text-gray-400 text-xs">{post.createdAt}</small>
-
+      
       {/* Tags Section */}
       <div className="flex flex-wrap gap-2 mt-3">
         {post.tags.map((tag, index) => (
@@ -80,7 +69,7 @@ const Post = ({ post }) => {
             className="text-xs font-semibold py-1 px-3 rounded-full"
             style={{
               backgroundColor: getRandomColor(index),
-              color: "white",
+              color: "white"
             }}
           >
             {tag}
@@ -112,19 +101,11 @@ const PostList = ({ posts }) => {
 
 const EventsWidget = ({ events }) => {
   return (
-    <div
-      className="p-10 max-w-xs border rounded-xl shadow-md bg-gray-100"
-      style={{ maxHeight: "580px", marginTop: "90px" }}
-    >
-      <h3 className="text-lg font-semibold mb-4 text-center">
-        Hottest Events This Week
-      </h3>
+    <div className="p-10 max-w-xs border rounded-xl shadow-md bg-gray-100" style={{ maxHeight: "580px",marginTop: "90px"}} >
+      <h3 className="text-lg font-semibold mb-4 text-center">Hottest Events This Week</h3>
       <ul className="space-y-3">
         {events.map((event, index) => (
-          <li
-            key={index}
-            className="flex flex-col p-3 bg-white rounded-lg shadow-sm"
-          >
+          <li key={index} className="flex flex-col p-3 bg-white rounded-lg shadow-sm">
             <h4 className="text-md font-bold">{event.title}</h4>
             <p className="text-sm text-gray-500">{event.date}</p>
             <p className="text-sm text-gray-400">{event.location}</p>
@@ -151,8 +132,7 @@ const PostForm = ({ onPostCreate }) => {
     <div className="mb-4 p-3 max-w-md mx-auto border rounded-xl shadow-md bg-white text-black">
       <form onSubmit={handleSubmit} className="flex items-center space-x-3">
         <Avatar className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
-          <span className="font-bold text-white">A</span>{" "}
-          {/* Placeholder avatar */}
+          <span className="font-bold text-white">A</span> {/* Placeholder avatar */}
         </Avatar>
         <input
           type="text"
@@ -207,25 +187,36 @@ const Newsfeed = () => {
   // User profile data
 
   return (
-    <div className="max-w-6xl mx-auto p-4 flex space-x-6">
-      {/* Main content column */}
-      <div className="flex-grow">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto p-4 flex flex-col space-y-6">
+        
+        <div className="flex-grow bg-white rounded-lg shadow-md p-6 flex flex-col">
         <Navbar />
-        <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
-
-        {/* User Profile and PostForm */}
-
-        <PostForm onPostCreate={handlePostCreate} />
-
-        {/* Post list */}
-        <PostList posts={posts} />
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800">Artist Newsfeed</h1>
+            <p className="text-gray-600 mt-2">See what artists have been up to!</p>
+          </div>
+  
+          <div className="flex flex-grow space-x-6">
+            <div className="flex-grow">
+              <PostForm onPostCreate={handlePostCreate} />
+              
+              <PostList posts={posts} />
+            </div>
+  
+            <div className="bg-white rounded-lg shadow-md p-6 w-1/3">
+              <EventsWidget events={hottestEvents} />
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* Events Widget Column */}
-      <EventsWidget events={hottestEvents} />
     </div>
   );
+  
+  
+  
 };
+
 
 // Export the Newsfeed component as the default export
 const Page = () => {
@@ -233,3 +224,4 @@ const Page = () => {
 };
 
 export default Page;
+
