@@ -187,24 +187,34 @@ const Newsfeed = () => {
   // User profile data
 
   return (
-    <div className="max-w-6xl mx-auto p-4 flex space-x-6">
-      {/* Main content column */}
-      <div className="flex-grow">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto p-4 flex flex-col space-y-6">
+        
+        <div className="flex-grow bg-white rounded-lg shadow-md p-6 flex flex-col">
         <Navbar />
-        <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
-        
-        {/* User Profile and PostForm */}
-        
-        <PostForm onPostCreate={handlePostCreate} />
-        
-        {/* Post list */}
-        <PostList posts={posts} />
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800">Artist Newsfeed</h1>
+            <p className="text-gray-600 mt-2">See what artists have been up to!</p>
+          </div>
+  
+          <div className="flex flex-grow space-x-6">
+            <div className="flex-grow">
+              <PostForm onPostCreate={handlePostCreate} />
+              
+              <PostList posts={posts} />
+            </div>
+  
+            <div className="bg-white rounded-lg shadow-md p-6 w-1/3">
+              <EventsWidget events={hottestEvents} />
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* Events Widget Column */}
-      <EventsWidget events={hottestEvents} />
     </div>
   );
+  
+  
+  
 };
 
 
