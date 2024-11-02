@@ -56,13 +56,13 @@ export default function Events() {
         </div>
 
         {/* Inline Search Bar */}
-        <div className="my-4 w-full flex justify-center">
+        <div className="my-4">
           <Input
             type="text"
             placeholder="Search events..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border-gray-300 rounded-lg px-4 py-2 w-1/4"
+            className="w-full border-gray-300 rounded-lg px-4 py-2"
           />
         </div>
 
