@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
+
 const Lightbox = ({ isOpen, onClose, content, picture, name, location, time, host }) => {
   if (!isOpen) return null;
 

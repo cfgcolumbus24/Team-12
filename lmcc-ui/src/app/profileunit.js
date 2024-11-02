@@ -12,9 +12,10 @@ const ProfileUnit = ({
   instagram,
   website,
   twitter,
+  onClick, // Add onClick prop
 }) => {
   return (
-    <Card className="max-w-34 p-2">
+    <Card className="max-w-34 p-2 cursor-pointer" onClick={onClick}>
       <CardHeader className="flex flex-col items-center">
         <Avatar className="h-24 w-24">
           <AvatarImage src={avatar} />
