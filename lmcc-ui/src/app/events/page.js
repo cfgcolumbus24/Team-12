@@ -98,7 +98,7 @@ export default function Events() {
      {/* Floating Box Button */}
 <button
   onClick={() => setIsOpen(true)}
-  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded shadow-lg hover:bg-blue-600 transition duration-200"
 >
   Request an Event
 </button>
