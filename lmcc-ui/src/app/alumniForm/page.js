@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-const RequestForm = () => {
+const RequestForm = ({ onSubmit }) => {
   const [formValues, setFormValues] = useState({
     name: "",
     details: "",
@@ -21,19 +21,29 @@ const RequestForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    onSubmit({
+      title: formValues.name, 
+      description: formValues.details, 
+      date: formValues.eventDate,
+      location: formValues.venue,
+      positionsNeeded: formValues.staffRequirements, 
+    }); 
+    setFormValues({ 
+      name: "",
+      details: "",
+      eventDate: "",
+      venue: "",
+      staffRequirements: "",
+    });
   };
 
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-gray-200"> {/* Grey background */}
+    <div className="max-w-md mx-auto p-4 bg-gray-200">
       <h2 className="text-xl font-bold mb-3">Alumni Job Request Form</h2>
       <form onSubmit={handleFormSubmit} className="space-y-3">
         <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Event Name
           </label>
           <input
@@ -46,12 +56,8 @@ const RequestForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
-
         <div>
-          <label
-            htmlFor="details"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="details" className="block text-sm font-medium text-gray-700">
             Description
           </label>
           <textarea
@@ -64,12 +70,8 @@ const RequestForm = () => {
             rows="3"
           />
         </div>
-
         <div>
-          <label
-            htmlFor="eventDate"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700">
             Date
           </label>
           <input
@@ -82,12 +84,8 @@ const RequestForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
-
         <div>
-          <label
-            htmlFor="venue"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="venue" className="block text-sm font-medium text-gray-700">
             Location
           </label>
           <input
@@ -100,12 +98,8 @@ const RequestForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
-
         <div>
-          <label
-            htmlFor="staffRequirements"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="staffRequirements" className="block text-sm font-medium text-gray-700">
             Staff Needed
           </label>
           <textarea
@@ -117,7 +111,6 @@ const RequestForm = () => {
             rows="2"
           />
         </div>
-
         <button
           type="submit"
           className="w-full bg-blue-500 text-white font-semibold py-1.5 rounded-md hover:bg-blue-600 transition duration-200"
