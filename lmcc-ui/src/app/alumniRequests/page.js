@@ -70,7 +70,7 @@ export default function JobOpenings() {
 
         {/* "+" Button to open Event Request Form */}
         <div className="mb-4 flex justify-center">
-          <Link href="/event-request" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
+          <Link href="/alumniForm" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
             <span className="mr-2">+</span> Add Event Positions
           </Link>
         </div>
