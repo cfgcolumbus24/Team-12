@@ -8,13 +8,13 @@ export default function AdminDashboard() {
   const initialUsers = [
     { id: 1, name: "John Doe", createdAt: "2024-01-15", role: "Alumni" },
     { id: 2, name: "Jane Smith", createdAt: "2024-02-10", role: "Member" },
-    { id: 3, name: "Bob Johnson", createdAt: "2024-03-05", role: "Guest" },
+    { id: 3, name: "Bob Johnson", createdAt: "2024-03-05", role: "Admin" }, // Changed from Guest to Admin
     { id: 4, name: "Alice Brown", createdAt: "2024-04-20", role: "Alumni" },
     { id: 5, name: "Charlie White", createdAt: "2024-05-25", role: "Member" },
-    { id: 6, name: "Diana Prince", createdAt: "2024-06-15", role: "Guest" },
+    { id: 6, name: "Diana Prince", createdAt: "2024-06-15", role: "Admin" }, // Changed from Guest to Admin
     { id: 7, name: "Elena Gilbert", createdAt: "2024-07-10", role: "Alumni" },
     { id: 8, name: "Frank Castle", createdAt: "2024-08-20", role: "Member" },
-    { id: 9, name: "Grace Hopper", createdAt: "2024-09-15", role: "Guest" },
+    { id: 9, name: "Grace Hopper", createdAt: "2024-09-15", role: "Admin" }, // Changed from Guest to Admin
     { id: 10, name: "Hank Pym", createdAt: "2024-10-05", role: "Alumni" },
   ];
 
@@ -38,6 +38,11 @@ export default function AdminDashboard() {
       return aValue < bValue ? 1 : -1;
     }
   });
+
+  // Function to handle role change
+  const handleRoleChange = (id, newRole) => {
+    setUsers(users.map(user => user.id === id ? { ...user, role: newRole } : user));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
@@ -96,7 +101,15 @@ export default function AdminDashboard() {
                       {user.createdAt}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {user.role}
+                      <select
+                        className="border rounded px-2 py-1 text-sm focus:outline-none focus:ring focus:ring-blue-300"
+                        value={user.role}
+                        onChange={(e) => handleRoleChange(user.id, e.target.value)}
+                      >
+                        <option value="Alumni">Alumni</option>
+                        <option value="Member">Member</option>
+                        <option value="Admin">Admin</option> {/* Changed from Guest to Admin */}
+                      </select>
                     </td>
                   </tr>
                 ))}
