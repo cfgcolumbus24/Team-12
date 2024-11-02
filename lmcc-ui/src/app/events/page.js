@@ -16,35 +16,40 @@ export default function Events() {
       description: "Join us for a blast!",
       date: "Nov 2, 2024 @ 5 PM",
       location: "Central Park",
-      image: "https://images.unsplash.com/flagged/photo-1565070930498-fe3938b105d2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG11c2ljJTIwZmVzdGl2YWx8ZW58MHx8MHx8fDA%3D",
+      image:
+        "https://images.unsplash.com/flagged/photo-1565070930498-fe3938b105d2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG11c2ljJTIwZmVzdGl2YWx8ZW58MHx8MHx8fDA%3D",
     },
     {
       title: "Live Jazz Night",
       description: "Cool classy music",
       date: "Nov 5, 2024 @ 8 PM",
       location: "Blue Note",
-      image: "https://images.unsplash.com/photo-1516916759473-600c07bc12d4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8amF6eiUyMG5pZ2h0fGVufDB8fDB8fHww",
+      image:
+        "https://images.unsplash.com/photo-1516916759473-600c07bc12d4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8amF6eiUyMG5pZ2h0fGVufDB8fDB8fHww",
     },
     {
       title: "Images: Sculpture Exhibitions",
       description: "Observe the wonders.",
       date: "Nov 7, 2024 @ 5 PM",
       location: "Bronx Museum",
-      image: "https://images.unsplash.com/photo-1597011652683-a9cec37b3bc8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2N1bHB0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+      image:
+        "https://images.unsplash.com/photo-1597011652683-a9cec37b3bc8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2N1bHB0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       title: "Watercolor Workshop",
       description: "Paint the rainbow.",
       date: "Nov 12, 2024 @ 3 PM",
       location: "The Arts Center",
-      image: "https://images.unsplash.com/photo-1591693898234-f2bba7c8beaa?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJjb2xvcnxlbnwwfHwwfHx8MA%3D%3D",
+      image:
+        "https://images.unsplash.com/photo-1591693898234-f2bba7c8beaa?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJjb2xvcnxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       title: "Piano Concert: Beethoven",
       description: "Performed by Alice Young",
       date: "Nov 16, 2024 @ 7 PM",
       location: "Carnegie Hall",
-      image: "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D",
+      image:
+        "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlhbm98ZW58MHx8MHx8fDA%3D",
     },
   ];
 
@@ -100,28 +105,27 @@ export default function Events() {
         </div>
       </div>
 
-     {/* Floating Box Button */}
-<button
-  onClick={() => setIsOpen(true)}
-  className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded shadow-lg hover:bg-blue-600 transition duration-200"
->
-  Request an Event
-</button>
+      {/* Floating Box Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+      >
+        Request an Event
+      </button>
 
-    {isOpen && (
-      <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
-          >
-            ✕
-          </button>
-          <ForumButton />
+      {isOpen && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-1 right-2 text-black-400 hover:text-black-400"
+            >
+              ✕
+            </button>
+            <ForumButton />
+          </div>
         </div>
-      </div>
-)}
-
+      )}
     </div>
   );
 }
