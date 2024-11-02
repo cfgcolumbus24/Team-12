@@ -72,7 +72,14 @@ export default function ForumButton() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md"
                   />
                 </div>
-                <div className="flex justify-end space-x-2">
+                <div className="flex justify-between space-x-2">
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                  >
+                    Submit
+                  </button>
                   <button
                     type="button"
                     onClick={handleClose}
@@ -80,7 +87,8 @@ export default function ForumButton() {
                   >
                     Close
                   </button>
-                </div>
+                  </div>
+                 
               </form>
             </div>
           </div>
