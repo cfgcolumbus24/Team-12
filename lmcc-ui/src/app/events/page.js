@@ -1,4 +1,9 @@
+
+import ForumButton from '@/components/ForumButton';
 import EventsCard from "@/components/EventsCard";
+import Navbar from '@/components/ui/Navbar';
+import SearchBar from '@/components/searchBar';
+import { Search } from 'lucide-react';
 
 export default function Events() {
   const events = [
@@ -30,7 +35,14 @@ export default function Events() {
   ];
 
   return (
+<div className="min-h-screen bg-gray-50 py-8 px-4">
+<div className="max-w-4xl mx-auto">
+    <Navbar />
+    <SearchBar />
+    <ForumButton />
+
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+
       {events.map((event, index) => (
         <EventsCard
           key={index}
@@ -40,5 +52,8 @@ export default function Events() {
         />
       ))}
     </div>
+
+  </div>
+</div>
   );
 }

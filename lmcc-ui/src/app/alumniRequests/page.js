@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
 import Link from 'next/link'; // Import Link from next/link
+import Navbar from "@/components/ui/Navbar";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
@@ -61,13 +62,15 @@ export default function JobOpenings() {
   );
 
   return (
+  
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
+      <Navbar />
         <h1 className="text-4xl font-bold text-center mb-8"> Alumni Job Positions </h1>
 
         {/* "+" Button to open Event Request Form */}
         <div className="mb-4 flex justify-center">
-          <Link href="/event-request" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
+          <Link href="/alumniForm" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
             <span className="mr-2">+</span> Add Event Positions
           </Link>
         </div>
