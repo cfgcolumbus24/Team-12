@@ -12,8 +12,10 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { useCurrentUser } from "@/app/firebase/firebase";
 
 export default function Navbar() {
+  const { currentUser, loading } = useCurrentUser();
   return (
     <div className="flex items-center justify-between mb-16">
       {/* Main Navigation */}
@@ -66,8 +68,8 @@ export default function Navbar() {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="h-10 w-10 p-0">
-              <Image
-                src="/assets/stock1.jpeg"
+              <img
+                src={loading ? null : currentUser.photoURL}
                 alt="User Profile"
                 width={40}
                 height={40}

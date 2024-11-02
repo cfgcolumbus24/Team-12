@@ -24,10 +24,13 @@ const RequestForm = () => {
     console.log(formValues);
   };
 
-
   return (
-    <div className="max-w-md mx-auto p-4 bg-gray-200"> {/* Grey background */}
-      <h2 className="text-xl font-bold mb-3">Request an Event to be Featured!</h2>
+    <div className="max-w-md mx-auto p-4 bg-gray-200">
+      {" "}
+      {/* Grey background */}
+      <h2 className="text-xl font-bold mb-3">
+        Request an Event to be Featured!
+      </h2>
       <form onSubmit={handleFormSubmit} className="space-y-3">
         <div>
           <label
@@ -100,7 +103,6 @@ const RequestForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
           />
         </div>
-
 
         <button
           type="submit"

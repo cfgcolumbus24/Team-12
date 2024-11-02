@@ -200,11 +200,55 @@ export default function AdminDashboard() {
   
 
   const renderModuleContent = () => {
+    const handleSaveChanges = () => {
+      // Logic to save changes (e.g., send updated data to the backend)
+      console.log("Changes saved:", users);
+      alert("Changes saved successfully!");
+    };
+  
     switch (selectedModule) {
       case "Users":
         return (
           <div>
-            {/* User management code */}
+            <h2 className="text-xl font-semibold mb-4">User Management</h2>
+            <div className="overflow-y-auto border border-gray-300 rounded-lg" style={{ maxHeight: "calc(5 * 2.5rem)" }}>
+              <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
+                <thead className="sticky top-0 bg-gray-100">
+                  <tr className="text-left">
+                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("name")}>Name</th>
+                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("createdAt")}>Created At</th>
+                    <th className="px-4 py-2 cursor-pointer" onClick={() => handleSortChange("role")}>Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedUsers.map((user) => (
+                    <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-50">
+                      <td className="px-4 py-2">{user.name}</td>
+                      <td className="px-4 py-2">{user.createdAt}</td>
+                      <td className="px-4 py-2">
+                        <select
+                          className="border rounded px-2 py-1 bg-white"
+                          value={user.role}
+                          onChange={(e) => handleRoleChange(user.id, e.target.value)}
+                        >
+                          <option value="Admin">Admin</option>
+                          <option value="Alumni">Alumni</option>
+                          <option value="Member">Member</option>
+                        </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="flex justify-start mt-4">
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={handleSaveChanges}
+              >
+                Save Changes
+              </button>
+            </div>
           </div>
         );
       case "Events":
@@ -215,7 +259,8 @@ export default function AdminDashboard() {
         return <div>Select a module from the sidebar</div>;
     }
   };
-
+  
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6 flex">
       <div className="w-1/5 bg-white shadow-lg rounded-lg p-4">
