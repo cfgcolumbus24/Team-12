@@ -5,10 +5,13 @@ import Navbar from "@/components/ui/Navbar";
 import ProfileUnit from "../profileunit";
 import { useState, useEffect } from "react";
 import Lightbox from "@/components/ui/lightbox_start";
+import ProfileLightbox from "@/components/ui/lightbox_profile";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLightboxOpen, setIsLightboxOpen] = useState(false); 
+  const [isProfileLightboxOpen, setIsProfileLightboxOpen] = useState(false);
+  const [selectedAlumnus, setSelectedAlumnus] = useState(null);
 
   const alumniData = [
     {
@@ -20,7 +23,9 @@ export default function AlumniPanel() {
       contact: "+1 638 929 1921",
       twitter: "https://x.com/LMCC",
       instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      website: "https://www.journoportfolio.com/examples/artists/",
+      portfolio: "here we go whats the link",
+      lmcc: "got grant in 2015",
     },
     {
       id: 2,
@@ -31,7 +36,9 @@ export default function AlumniPanel() {
       contact: "+1 638 929 1921",
       twitter: "https://x.com/LMCC",
       instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      website: "https://www.journoportfolio.com/examples/artists/",
+      portfolio: "here we go whats the link",
+      lmcc: "got grant in 2015",
     },
     {
       id: 3,
@@ -42,7 +49,9 @@ export default function AlumniPanel() {
       contact: "+1 638 929 1921",
       twitter: "https://x.com/LMCC",
       instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      website: "https://www.journoportfolio.com/examples/artists/",
+      portfolio: "here we go whats the link",
+      lmcc: "got grant in 2015",
     },
     {
       id: 4,
@@ -53,7 +62,9 @@ export default function AlumniPanel() {
       contact: "+1 638 929 1921",
       twitter: "https://x.com/LMCC",
       instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      website: "https://www.journoportfolio.com/examples/artists/",
+      portfolio: "here we go whats the link",
+      lmcc: "got grant in 2015",
     },
     {
       id: 5,
@@ -64,7 +75,9 @@ export default function AlumniPanel() {
       contact: "+1 638 929 1921",
       twitter: "https://x.com/LMCC",
       instagram: "https://www.instagram.com/lmcc_nyc",
-      portfolio: "https://www.journoportfolio.com/examples/artists/",
+      website: "https://www.journoportfolio.com/examples/artists/",
+      portfolio: "here we go whats the link",
+      lmcc: "got grant in 2015",
     },
   ];
 
@@ -76,6 +89,11 @@ export default function AlumniPanel() {
   useEffect(() => {
     setIsLightboxOpen(true); 
   }, []);
+
+  const openProfileLightbox = (alumnus) => {
+    setSelectedAlumnus(alumnus);
+    setIsProfileLightboxOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
@@ -99,15 +117,16 @@ export default function AlumniPanel() {
 
         <div className="grid grid-cols-4 gap-8 mt-8">
           {filteredAlumni.map((alumnus) => (
-            <ProfileUnit
-              key={alumnus.id}
-              name={alumnus.name}
-              avatar={alumnus.picture}
-              topics={alumnus.topics}
-              twitter={alumnus.twitter}
-              instagram={alumnus.instagram}
-              website={alumnus.portfolio}
-            />
+            <div key={alumnus.id} onClick={() => openProfileLightbox(alumnus)}>
+              <ProfileUnit
+                name={alumnus.name}
+                avatar={alumnus.picture}
+                topics={alumnus.topics}
+                twitter={alumnus.twitter}
+                instagram={alumnus.instagram}
+                website={alumnus.website}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -123,6 +142,23 @@ export default function AlumniPanel() {
         picture = {"https://wallpapercave.com/wp/wp9977857.jpg"}
         host = {"Some alumni"}
       />
+      )}
+
+      {isProfileLightboxOpen && selectedAlumnus && (
+        <ProfileLightbox
+          isOpen={isProfileLightboxOpen}
+          onClose={() => setIsProfileLightboxOpen(false)}
+          name={selectedAlumnus.name}
+          avatar={selectedAlumnus.picture}
+          bio={selectedAlumnus.bio}
+          topics={selectedAlumnus.topics}
+          number={selectedAlumnus.contact}
+          instagram={selectedAlumnus.instagram}
+          website={selectedAlumnus.website}
+          twitter={selectedAlumnus.twitter}
+          lmcc={selectedAlumnus.lmcc}
+          events={selectedAlumnus.portfolio}
+        />
       )}
     </div>
   );
