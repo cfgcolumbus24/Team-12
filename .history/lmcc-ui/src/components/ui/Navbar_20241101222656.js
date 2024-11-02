@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <NavigationMenu className="mb-16">
+    <NavigationMenu>
       <NavigationMenuList className="flex space-x-4">
         {" "}
         <NavigationMenuItem>
