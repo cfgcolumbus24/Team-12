@@ -52,6 +52,41 @@ export default function JobOpenings() {
           </p>
         </div>
 
+
+        {}
+        <div className="mb-4 flex justify-center">
+
+             <button
+          onClick={() => setIsOpen(true)}
+          className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200"
+        > Add Event Positions</button>
+           
+
+          
+        </div>
+
+        {isOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ✕
+            </button>
+            <AlumniForm />
+            <button
+             onClick={() => setIsOpen(false)}
+          type="submit"
+          className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200"
+           >
+            Submit
+            </button>
+          </div>
+        </div>
+        )}
+      
+        {}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
