@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const RequestForm = () => {
   const [formValues, setFormValues] = useState({
-    name: '',
-    details: '',
-    eventDate: '',
-    venue: '',
-    staffRequirements: '',
+    name: "",
+    details: "",
+    eventDate: "",
+    venue: "",
+    staffRequirements: "",
   });
 
   const handleInputChange = (e) => {
@@ -21,7 +21,6 @@ const RequestForm = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send data to a server
     console.log(formValues);
   };
 
@@ -30,7 +29,10 @@ const RequestForm = () => {
       <h2 className="text-xl font-bold mb-4">Alumni Job Request Form</h2>
       <form onSubmit={handleFormSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
             Event Name
           </label>
           <input
@@ -45,7 +47,10 @@ const RequestForm = () => {
         </div>
 
         <div>
-          <label htmlFor="details" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="details"
+            className="block text-sm font-medium text-gray-700"
+          >
             Description
           </label>
           <textarea
@@ -60,7 +65,10 @@ const RequestForm = () => {
         </div>
 
         <div>
-          <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="eventDate"
+            className="block text-sm font-medium text-gray-700"
+          >
             Date
           </label>
           <input
@@ -75,7 +83,10 @@ const RequestForm = () => {
         </div>
 
         <div>
-          <label htmlFor="venue" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="venue"
+            className="block text-sm font-medium text-gray-700"
+          >
             Location
           </label>
           <input
@@ -90,7 +101,10 @@ const RequestForm = () => {
         </div>
 
         <div>
-          <label htmlFor="staffRequirements" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="staffRequirements"
+            className="block text-sm font-medium text-gray-700"
+          >
             Staff Needed
           </label>
           <textarea
