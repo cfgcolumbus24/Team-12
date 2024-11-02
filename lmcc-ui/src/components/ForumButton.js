@@ -93,6 +93,5 @@ export default function ForumButton() {
           </div>
         )}
       </div>
-    );
+    )};
 
-export default RequestForm;

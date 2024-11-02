@@ -19,10 +19,7 @@ export default function JobOpenings() {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [eventsList, setEventsList] = useState([
-<<<<<<< HEAD
-=======
     // Initial events
->>>>>>> ca330a7 (working job request form)
     {
       id: 1,
       title: "Networking Dinner",
@@ -37,28 +34,18 @@ export default function JobOpenings() {
       positionsNeeded: "Booth Representatives, Organizers",
       image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
     },
-<<<<<<< HEAD
-  ]);
-
-  const searchedEvents = eventsList.filter((event) => {
-    const title = event.title || ""; 
-=======
     // ... other initial events
   ]);
 
   const searchedEvents = eventsList.filter((event) => {
     const title = event.title || ""; // Ensure title is a string
->>>>>>> ca330a7 (working job request form)
     return title.toLowerCase().includes(query.toLowerCase());
   });
 
   const handleFormSubmit = (newEvent) => {
     const newEventWithId = {
       id: eventsList.length + 1,
-<<<<<<< HEAD
-=======
       // Use default image if none is provided
->>>>>>> ca330a7 (working job request form)
       image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
       ...newEvent,
     };
