@@ -21,20 +21,7 @@ const RequestForm = ({ onSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit({
-      title: formValues.name, 
-      description: formValues.details, 
-      date: formValues.eventDate,
-      location: formValues.venue,
-      positionsNeeded: formValues.staffRequirements, 
-    }); 
-    setFormValues({ 
-      name: "",
-      details: "",
-      eventDate: "",
-      venue: "",
-      staffRequirements: "",
-    });
+    console.log(formValues);
   };
 
 
@@ -111,12 +98,7 @@ const RequestForm = ({ onSubmit }) => {
             rows="2"
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white font-semibold py-1.5 rounded-md hover:bg-blue-600 transition duration-200"
-        >
-          Submit
-        </button>
+
       </form>
     </div>
   );

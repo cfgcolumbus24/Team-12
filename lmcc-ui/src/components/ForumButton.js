@@ -1,116 +1,98 @@
 "use client";
+import { useState } from "react";
+export default function ForumButton() {
 
-import React, { useState } from "react";
 
-const RequestForm = () => {
-  const [formValues, setFormValues] = useState({
-    name: "",
-    details: "",
-    eventDate: "",
-    venue: "",
-    staffRequirements: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
+    const [isOpen, setIsOpen] = useState(false);
+    const [formData, setFormData] = useState({
+      title: '',
+      date: '',
+      description: ''
     });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValues);
-  };
-
-
-  return (
-    <div className="max-w-md mx-auto p-4 bg-gray-200"> {/* Grey background */}
-      <h2 className="text-xl font-bold mb-3">Request an Event to be Featured!</h2>
-      <form onSubmit={handleFormSubmit} className="space-y-3">
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Event Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={formValues.name}
-            onChange={handleInputChange}
-            required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="details"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Description
-          </label>
-          <textarea
-            name="details"
-            id="details"
-            value={formValues.details}
-            onChange={handleInputChange}
-            required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
-            rows="3"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="eventDate"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Date
-          </label>
-          <input
-            type="date"
-            name="eventDate"
-            id="eventDate"
-            value={formValues.eventDate}
-            onChange={handleInputChange}
-            required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="venue"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Location
-          </label>
-          <input
-            type="text"
-            name="venue"
-            id="venue"
-            value={formValues.venue}
-            onChange={handleInputChange}
-            required
-            className="mt-1 block w-full border border-gray-300 rounded-md p-1.5 focus:outline-none focus:ring focus:ring-blue-500"
-          />
-        </div>
-
-
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+  
+    const handleClose = () => {
+      setIsOpen(false);
+      setFormData({ title: '', date: '', description: '' }); // Reset the form
+    };
+  
+    return (
+      <div className="flex justify-left mt-10">
         <button
-          type="submit"
-          className="w-full bg-blue-500 text-white font-semibold py-1.5 rounded-md hover:bg-blue-600 transition duration-200"
+          onClick={() => setIsOpen(true)}
+          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         >
-          Submit
+          Submit an Event
         </button>
-      </form>
-    </div>
-  );
-};
+  
+        {isOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-lg mx-4">
+              <h2 className="text-2xl font-semibold mb-4">Submit an Event</h2>
+              <form className="space-y-4">
+                <div>
+                  <label className="block font-medium text-gray-700 mb-1">
+                    Event Title:
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block font-medium text-gray-700 mb-1">
+                    Event Date:
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block font-medium text-gray-700 mb-1">
+                    Description:
+                  </label>
+                  <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="flex justify-between space-x-2">
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  >
+                    Close
+                  </button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
+    );
 
 export default RequestForm;
