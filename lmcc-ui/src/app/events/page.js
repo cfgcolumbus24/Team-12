@@ -1,9 +1,7 @@
-
 import ForumButton from '@/components/ForumButton';
 import EventsCard from "@/components/EventsCard";
 import Navbar from '@/components/ui/Navbar';
 import SearchBar from '@/components/searchBar';
-import { Search } from 'lucide-react';
 
 export default function Events() {
   const events = [
@@ -35,25 +33,37 @@ export default function Events() {
   ];
 
   return (
-<div className="min-h-screen bg-gray-50 py-8 px-4">
-<div className="max-w-4xl mx-auto">
-    <Navbar />
-    <SearchBar />
-    <ForumButton />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 py-12 px-6">
+      <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <Navbar />
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        <div className="my-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-800">Upcoming Events</h1>
+          <p className="text-gray-600 mt-2">Don't miss out on these exciting activities!</p>
+        </div>
 
-      {events.map((event, index) => (
-        <EventsCard
-          key={index}
-          title={event.title}
-          description={event.description}
-          date={event.date}
-        />
-      ))}
+        <SearchBar />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transform transition duration-300 hover:-translate-y-1 border-t-4 border-blue-400"
+            >
+              <EventsCard
+                title={event.title}
+                description={event.description}
+                date={event.date}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Floating Button */}
+      <div className="fixed bottom-8 right-8">
+        <ForumButton />
+      </div>
     </div>
-
-  </div>
-</div>
   );
 }
