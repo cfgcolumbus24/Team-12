@@ -85,7 +85,7 @@ export default function Navbar() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/logout" passHref>
-                    <NavigationMenuLink className="text-sm hover:text-red-300">
+                    <NavigationMenuLink className="text-sm hover:text-red-300 left">
                       Logout
                     </NavigationMenuLink>
                   </Link>

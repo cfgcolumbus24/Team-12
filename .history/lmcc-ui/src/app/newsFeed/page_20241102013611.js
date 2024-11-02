@@ -207,22 +207,11 @@ const Newsfeed = () => {
   // User profile data
 
   return (
-    <div className="max-w-6xl mx-auto p-4 flex space-x-6">
-      {/* Main content column */}
-      <div className="flex-grow">
-        <Navbar />
-        <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
-
-        {/* User Profile and PostForm */}
-
-        <PostForm onPostCreate={handlePostCreate} />
-
-        {/* Post list */}
-        <PostList posts={posts} />
-      </div>
-
-      {/* Events Widget Column */}
-      <EventsWidget events={hottestEvents} />
+    <div className="max-w-lg mx-auto p-4">
+      <Navbar></Navbar>
+      <h2 className="text-2xl font-bold mb-4">Artist Newsfeed</h2>
+      <PostForm onPostCreate={handlePostCreate} />
+      <PostList posts={posts} />
     </div>
   );
 };
