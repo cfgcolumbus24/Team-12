@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/ui/Navbar";
+import { useCurrentUser } from "../firebase/firebase";
 
 // Sample posts to display when the app is loaded
 const samplePosts = [
@@ -108,25 +109,28 @@ const getRandomColor = (index) => {
 
 // Profile Component to display profile picture and bio
 const ProfileHeader = () => {
+  const { currentUser, loading } = useCurrentUser();
   return (
     <div className="flex flex-col items-center mb-8 p-4 bg-blue-100 rounded shadow-lg w-[800px] mx-auto">
       <div className="relative">
         <Avatar className="h-36 w-36 rounded-full border-4 border-white shadow-lg mb-4 transition-transform duration-300 hover:scale-105 bg-blue-500">
-          <AvatarImage src="/assets/stock1.jpeg" />
-          <AvatarFallback className="text-3xl font-bold text-white">AP</AvatarFallback>
+          <AvatarImage
+            referrerPolicy="no-referrer"
+            src={loading ? null : currentUser.photoURL}
+          />
+          <AvatarFallback className="text-3xl font-bold text-white">
+            AP
+          </AvatarFallback>
         </Avatar>
-        
       </div>
-      <h2 className="text-3xl font-extrabold text-gray-800 mb-2">
-        Maria Doe
-      </h2>
+      <h2 className="text-3xl font-extrabold text-gray-800 mb-2">Maria Doe</h2>
       <p className="text-gray-700 text-center max-w-xs leading-relaxed">
-        Passionate artist exploring modern art forms and pushing creative boundaries.
+        Passionate artist exploring modern art forms and pushing creative
+        boundaries.
       </p>
     </div>
   );
 };
-
 
 // PostList Component to display all posts
 const PostList = ({ posts }) => {
@@ -136,7 +140,9 @@ const PostList = ({ posts }) => {
       {posts.length === 0 ? (
         <p className="text-center text-gray-600">No posts available.</p>
       ) : (
-        posts.map((post, index) => <Post key={index} post={post} avatarUrl={avatarUrl} />)
+        posts.map((post, index) => (
+          <Post key={index} post={post} avatarUrl={avatarUrl} />
+        ))
       )}
     </div>
   );
@@ -151,8 +157,12 @@ const MyProfile = () => {
         <ProfileHeader />
         <Tabs defaultValue="posts" className="w-full">
           <TabsList className="mb-6 flex justify-center space-x-4">
-            <TabsTrigger value="posts" className="text-lg">Posts</TabsTrigger>
-            <TabsTrigger value="gallery" className="text-lg">Gallery</TabsTrigger>
+            <TabsTrigger value="posts" className="text-lg">
+              Posts
+            </TabsTrigger>
+            <TabsTrigger value="gallery" className="text-lg">
+              Gallery
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="posts">
             <h3 className="text-3xl font-semibold mb-6 text-center">Posts</h3>
