@@ -22,7 +22,7 @@ export default function JobOpenings() {
       title: "Career Fair",
       date: "December 1, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
+      image: "https://www.bcfr.org/wp-content/uploads/2023/01/Canva-Graphics-03-e1674840158165.png",
     },
   ]);
 
@@ -34,7 +34,7 @@ export default function JobOpenings() {
   const handleFormSubmit = (newEvent) => {
     const newEventWithId = {
       id: eventsList.length + 1,
-      image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
+      image: newEvent.image || "https://i.pinimg.com/originals/22/32/4b/22324b56ab4956479efc2f4ecaa61b20.png",
       ...newEvent,
     };
     setEventsList((prevEvents) => [...prevEvents, newEventWithId]);
