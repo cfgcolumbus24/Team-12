@@ -3,92 +3,68 @@
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
-import Image from "next/image";
-import Link from 'next/link';
 import Navbar from "@/components/ui/Navbar";
+import AlumniForm from "@/app/alumniForm/page";
 
 export default function JobOpenings() {
   const [query, setQuery] = useState("");
-
-  // Sample data for upcoming events (replace with real data)
-  const eventsList = [
+  const [isOpen, setIsOpen] = useState(false);
+  const [eventsList, setEventsList] = useState([
     {
       id: 1,
       title: "Networking Dinner",
       date: "November 15, 2024",
       positionsNeeded: "Event Coordinator, Volunteers",
-      image: "https://png.pngtree.com/png-vector/20240309/ourmid/pngtree-business-lunch-vector-concept-color-illustration-png-image_11902133.png",
+      image: "https://static.thenounproject.com/png/1341136-200.png",
     },
     {
       id: 2,
       title: "Career Fair",
       date: "December 1, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "https://www.pngitem.com/pimgs/m/568-5681240_job-fair-png-demanded-jobs-2025-transparent-png.png",
+      image: "https://masterconcept.ai/wp-content/uploads/2020/05/library-of-free-stock-career-fair-png-files-clipart-art-2019-career-fair-png-920_560.png",
     },
-    {
-      id: 3,
-      title: "Alumni Panel Discussion",
-      date: "January 10, 2025",
-      positionsNeeded: "Moderators, Panelists",
-      image: "https://media.licdn.com/dms/image/v2/C5612AQGjSS9LLG4Bjw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1536154980815?e=2147483647&v=beta&t=uDcuUebpSi7CCW7CSZMvMHSbstyW8yhIlHO1J8hfMA8",
-    },
-    {
-      id: 4,
-      title: "Annual Alumni Reunion",
-      date: "February 20, 2025",
-      positionsNeeded: "Planning Committee, Event Staff",
-      image: "https://png.pngtree.com/element_origin_min_pic/16/05/26/165746af26bf0f9.jpg",
-    },
-    {
-      id: 5,
-      title: "Workshop on Career Development",
-      date: "March 5, 2025",
-      positionsNeeded: "Facilitators, Helpers",
-      image: "https://img.freepik.com/premium-vector/businessman-career-development-illustration_1124-462.jpg",
-    },
-    {
-      id: 6,
-      title: "Mentorship Program Kickoff",
-      date: "April 12, 2025",
-      positionsNeeded: "Mentors, Mentees",
-      image: "https://media.licdn.com/dms/image/C4E12AQGnCW8yJzm_og/article-cover_image-shrink_600_2000/0/1540810957226?e=2147483647&v=beta&t=wTvGqidjQh1RF42NaSo7-ID6d7YtIni3Hs-a0Y6YVHo",
-    },
-  ];
+  ]);
 
-  // Filter events based on the search term
-  const searchedEvents = eventsList.filter((event) =>
-    event.title.toLowerCase().includes(query.toLowerCase())
-  );
+  const searchedEvents = eventsList.filter((event) => {
+    const title = event.title || ""; 
+    return title.toLowerCase().includes(query.toLowerCase());
+  });
+
+  const handleFormSubmit = (newEvent) => {
+    const newEventWithId = {
+      id: eventsList.length + 1,
+      image: newEvent.image || "https://www.pngmart.com/files/22/White-Background-PNG-Photo.png",
+      ...newEvent,
+    };
+    setEventsList((prevEvents) => [...prevEvents, newEventWithId]);
+    setIsOpen(false);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-200 py-8 px-4"> {/* Light gray background added */}
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-6 relative">
+      <div className="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl p-8">
         <Navbar />
-        <h1 className="text-4xl font-bold text-center mb-8"> Alumni Job Positions </h1>
-
-        {/* "+" Button to open Event Request Form */}
-        <div className="mb-4 flex justify-center">
-          <Link href="/alumniForm" className="flex items-center bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
-            <span className="mr-2">+</span> Add Event Positions
-          </Link>
+        <div className="my-8 text-center">
+          <h1 className="text-4xl font-bold text-blue-800">Alumni Job Board</h1>
+          <p className="text-gray-500 mt-3 text-lg">
+            Explore exciting job opportunities for our alumni!
+          </p>
         </div>
 
-        {/* Search Input */}
         <div className="mb-8 flex justify-center">
           <Input
             type="text"
             placeholder="Search events..."
-            className="w-full max-w-md"
+            className="w-full max-w-md border-gray-300 focus:ring-blue-400 focus:border-blue-400 rounded-full px-5 py-3 shadow-sm"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
 
-        {/* Events Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {searchedEvents.map((event) => (
-            <Card key={event.id} className="bg-blue-100 shadow-md"> {/* Lighter blue background added */}
+            <Card key={event.id} className="shadow-md bg-blue-100">
               <CardHeader className="flex justify-center pt-4">
                 <div className="flex justify-center">
                   <img
@@ -104,12 +80,35 @@ export default function JobOpenings() {
                   {event.title}
                 </CardTitle>
                 <p className="text-center text-gray-700">{event.date}</p>
-                <p className="text-center text-gray-500">{event.positionsNeeded}</p>
+                <p className="text-center text-gray-500">
+                  {event.positionsNeeded}
+                </p>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
+
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-8 right-7 w-48 h-10 bg-blue-500 text-white text-md flex items-center justify-center rounded-lg shadow-lg hover:bg-blue-600 transition duration-200"
+      >
+        Add Job Positions
+      </button>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-lg p-5 w-full max-w-md relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-gray-300 hover:text-gray-300"
+            >
+              ✕
+            </button>
+            <AlumniForm onSubmit={handleFormSubmit} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
