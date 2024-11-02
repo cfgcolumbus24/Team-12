@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function AlumniPanel() {
   const [searchTerm, setSearchTerm] = useState("");
-
+  
   // Sample data for alumni
   const alumniData = [
     {
@@ -73,6 +73,7 @@ export default function AlumniPanel() {
   const filteredAlumni = alumniData.filter((alumnus) =>
     alumnus.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">

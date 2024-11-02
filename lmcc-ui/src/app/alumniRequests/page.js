@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link';
 import Navbar from "@/components/ui/Navbar";
 
 export default function JobOpenings() {
@@ -17,42 +17,42 @@ export default function JobOpenings() {
       title: "Networking Dinner",
       date: "November 15, 2024",
       positionsNeeded: "Event Coordinator, Volunteers",
-      image: "/assets/event1.jpeg",
+      image: "https://png.pngtree.com/png-vector/20240309/ourmid/pngtree-business-lunch-vector-concept-color-illustration-png-image_11902133.png",
     },
     {
       id: 2,
       title: "Career Fair",
       date: "December 1, 2024",
       positionsNeeded: "Booth Representatives, Organizers",
-      image: "/assets/event2.jpeg",
+      image: "https://www.pngitem.com/pimgs/m/568-5681240_job-fair-png-demanded-jobs-2025-transparent-png.png",
     },
     {
       id: 3,
       title: "Alumni Panel Discussion",
       date: "January 10, 2025",
       positionsNeeded: "Moderators, Panelists",
-      image: "/assets/event3.jpeg",
+      image: "https://media.licdn.com/dms/image/v2/C5612AQGjSS9LLG4Bjw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1536154980815?e=2147483647&v=beta&t=uDcuUebpSi7CCW7CSZMvMHSbstyW8yhIlHO1J8hfMA8",
     },
     {
       id: 4,
       title: "Annual Alumni Reunion",
       date: "February 20, 2025",
       positionsNeeded: "Planning Committee, Event Staff",
-      image: "/assets/event4.jpeg",
+      image: "https://png.pngtree.com/element_origin_min_pic/16/05/26/165746af26bf0f9.jpg",
     },
     {
       id: 5,
       title: "Workshop on Career Development",
       date: "March 5, 2025",
       positionsNeeded: "Facilitators, Helpers",
-      image: "/assets/event5.jpeg",
+      image: "https://img.freepik.com/premium-vector/businessman-career-development-illustration_1124-462.jpg",
     },
     {
       id: 6,
       title: "Mentorship Program Kickoff",
       date: "April 12, 2025",
       positionsNeeded: "Mentors, Mentees",
-      image: "/assets/event6.jpeg",
+      image: "https://media.licdn.com/dms/image/C4E12AQGnCW8yJzm_og/article-cover_image-shrink_600_2000/0/1540810957226?e=2147483647&v=beta&t=wTvGqidjQh1RF42NaSo7-ID6d7YtIni3Hs-a0Y6YVHo",
     },
   ];
 
@@ -62,10 +62,9 @@ export default function JobOpenings() {
   );
 
   return (
-  
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-200 py-8 px-4"> {/* Light gray background added */}
       <div className="max-w-4xl mx-auto">
-      <Navbar />
+        <Navbar />
         <h1 className="text-4xl font-bold text-center mb-8"> Alumni Job Positions </h1>
 
         {/* "+" Button to open Event Request Form */}
@@ -89,10 +88,10 @@ export default function JobOpenings() {
         {/* Events Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {searchedEvents.map((event) => (
-            <Card key={event.id} className="shadow-md">
+            <Card key={event.id} className="bg-blue-100 shadow-md"> {/* Lighter blue background added */}
               <CardHeader className="flex justify-center pt-4">
-                <div className="relative w-24 h-24">
-                  <Image
+                <div className="flex justify-center">
+                  <img
                     src={event.image}
                     alt={`${event.title} event`}
                     fill
@@ -114,4 +113,3 @@ export default function JobOpenings() {
     </div>
   );
 }
-

@@ -12,13 +12,12 @@ import { useState } from "react";
 import Attending from "./Attending";
 import InterestedButton from "./InterestedButton";
 
-export default function EventsCard({ title, description, date }) {
+export default function EventsCard({ title, description, date, image }) {
   const [isInterested, setIsInterested] = useState(false);
-  console.log(isInterested);
   return (
     <Card className="shadow-lg rounded-md overflow-hidden border border-gray-200">
       <img
-        src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg"
+        src={image}
         alt={title}
         width={400}
         height={200}
