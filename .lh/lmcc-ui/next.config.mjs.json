@@ -12,7 +12,7 @@
             ],
             "date": 1730538696018,
             "name": "Commit-0",
-            "content": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  env: {\n    REACT_APP_FIREBASE_API_KEY: \"\",\n  },\n};\n\nexport default nextConfig;\n"
+            "content": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  env: {\n    REACT_APP_FIREBASE_API_KEY: \"AIzaSyCb9JgcPh8sLzhCv9Yfo_GNkV4xuIDcZ5w\",\n  },\n};\n\nexport default nextConfig;\n"
         }
     ]
 }
